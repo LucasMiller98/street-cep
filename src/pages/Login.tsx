@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 function Login() {
+
+  
   return(
     <>
       <Helmet>
@@ -34,7 +36,10 @@ function Login() {
           </div>
 
           <div className='container-button-login'>
-            <button type='button'>
+            <button 
+              type='button' 
+              // onClick={handleLogin}
+            >
               <FiLogIn size={25} color='#f1f1f1' />
               <span>Entrar</span> 
             </button>
