@@ -1,0 +1,61 @@
+.welcome-page {
+  background: linear-gradient(329.54deg, #b7e9f3 0%, #539999 100%);
+  
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.welcome-page .content-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 1100px;
+
+  height: 100%;
+  max-height: 680px;
+
+  position: relative;
+}
+
+.welcome-page .content-main main {
+  max-width: 650px;
+}
+
+.welcome-page .content-main main #h1-welcome {
+  font-size: 4rem;
+}
+
+.welcome-page .content-main .start-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 2rem;
+  background: linear-gradient(322.43deg, #1c424d 10%, #06242c 100%);
+  border-radius: 20px;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #f3f3f3;
+  padding: 2rem 5rem;
+  transition: all ease-out .2s;
+  display: flex;
+  align-items: center;
+}
+
+.welcome-page .content-main .start-button strong {
+  font-size: 1.2rem;
+}
+
+.welcome-page .content-main .start-button:hover {
+  border: 2px solid #539999;
+  box-shadow: 12px 15px 17px #606060;
+}
+
+.welcome-page .content-main p {
+  font-size: 1.7rem;
+}

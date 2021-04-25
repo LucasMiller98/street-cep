@@ -1,0 +1,171 @@
+#header-create-account {
+  width: 100vw;
+  height: 15.2vh;
+  background: linear-gradient(200.10deg, #2a7c56 0%, #1a3d39 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#header-create-account #h1-code, .anchor-login {
+  color: #f1f1f1;
+}
+
+#header-create-account .anchor-login {
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all ease-out .3s;
+  background: linear-gradient(200.10deg, #2a7c56 0%, #1a3d39 100%);
+  border-radius: .7rem;
+  padding: .5rem 2rem;
+}
+
+#header-create-account .anchor-login:hover {
+  border: 1px solid #1a3d39;
+}
+
+#header-create-account #h1-code {
+  font-size: 2.3rem;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 35vh;
+  width: 100vw;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  margin-top: 3rem;
+}
+
+.form-container form .text-name {
+  display: inherit;
+  gap: 1rem;
+  margin-bottom: .7rem;
+}
+
+.form-container form .div-data {
+  display: inherit;
+  flex-direction: column;
+  gap: .7rem;
+}
+
+.form-container form #birthday {
+  display: inherit;
+  gap: .9rem;
+  margin: 1rem 0;
+}
+
+.form-container form #h3-birthday {
+  margin-top: 1rem;
+}
+
+.form-container form #birthday #select-months, #select-day, #select-year {
+  border: 1px solid #131313;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 10vw;
+  height: 5vh;
+  padding: 0 .7rem;
+  font-size: 1.3rem;
+  border: 1px solid #1a3d39;
+  color: #131313;
+}
+
+.form-container form #birthday 
+#select-months, 
+#select-day, 
+#select-year, 
+.form-container 
+form 
+input[type=text], 
+input[type=password] {
+  transition: all ease-out .3s;
+  background-color: #e2e2e2bb;
+}
+
+.form-container form input[type=text], input[type=password] {
+  border: 1.1px solid #1a3d39;
+  border-radius: 20px;
+  font: 500 1.3rem Lexend, sans-serif;
+  outline: none;
+  padding: 1rem 1.2rem;
+}
+
+.form-container form input[type=text]:focus, input[type=password]:focus, .form-container form #birthday 
+#select-months:hover, 
+#select-day:hover, 
+#select-year:hover {
+  border-bottom: 2px solid #115e53;
+  background: #f3f3f3;
+}
+
+.form-container form #h3-gender, #h3-birthday {
+  font-size: 1.8rem;
+  margin-left: .9rem;
+}
+
+.form-container #create-new-account-easily {
+  margin: .7rem 1.5rem auto;
+  height: 5vh;
+  width: 38.7vw;
+  text-align: left;
+}
+
+.form-container #create-new-account-easily h3 {
+  font-size: 2.9rem;
+}
+
+.form-container #create-new-account-easily span {
+  font-size: 1.9rem;
+}
+
+.form-container form .div-gender {
+  display: inherit;
+  align-items: center;
+  justify-content: start;
+  gap: 5rem;
+  margin: 1rem 0;
+  width: 70%;
+}
+
+.form-container form .div-gender .female, .male {
+  width: 100%;
+}
+
+.form-container form .div-gender input[type=radio] {
+  width: 30%;
+  color: #1a3d39;
+  font-style: #005000;
+  height: 3vh;
+  cursor: pointer;
+}
+
+.form-container form .div-gender label {
+  font-size: 1.7rem;
+}
+
+.form-container form #anchor-signUp {
+  text-decoration: none;
+  color: #f1f1f1;
+  font-weight: 500;
+  width: 10vw;
+  height: 10vh;
+  padding: .7rem 1rem;
+  background: linear-gradient(200.30deg, #20945e 0%, #175f57 100%);
+  font-size: 1.6rem;
+  border-radius: 20px;
+  border: 1.1px solid #2a7c56;
+  transition: all ease-out .3s;
+}
+
+.form-container form #anchor-signUp:hover, .anchor-login:hover {
+  transform: translateY(-2px);
+  filter: brightness(.95);
+}

@@ -1,0 +1,155 @@
+.container-form {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(300.20deg, #f1f1f1 0%, #f5f5f5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.container-form .arrow-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  transition: all ease-out .3s;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.container-form .arrow-back:hover {
+  transform: translateY(-2px);
+}
+
+.container-form form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 40%;
+  max-width: 1080px;
+  height: 75.2%;
+  color: #f1f1f1;
+  background: linear-gradient(#115e53, #177938);
+  border-radius: 20px;
+  position: relative;
+}
+
+.container-form form #h1-login {
+  position: absolute;
+  top: 0;
+  color: #f1f1f1;
+  margin-top: 2rem;
+  margin-bottom: 1.9rem;
+  border-bottom: 1.1px solid #bfc1c2;
+}
+
+.container-float {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: 13px;
+}
+
+.container-form form .container-float input {
+  border-radius: .7rem;
+  border: 1px solid #bfc1c2;
+  font-size: 1.3rem;
+  outline: none;
+  width: 100%;
+  min-width: 180px;
+  transition: all ease-out .3s;
+  height: 7vh;
+  padding-left: 1rem;
+  color: #000000;
+  background-color: #e2e2e2bb;
+}
+
+.container-form form .container-float input:focus {
+  border-bottom: 2px solid #115e53;
+  background: #f3f3f3;
+}
+
+.container-form form .container-float input::placeholder {
+  color: transparent;
+}
+
+.container-form form label {
+  font-size: 1.2rem;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 13px;
+  transition: all ease-out .3s;
+}
+
+.container-float input:focus + label, .container-float input:not(:placeholder-shown) label {
+  font-size: .8rem;
+  margin-top: 0;
+  color: #115e53;
+}
+
+.MdAccountBox, .Si1Password {
+  margin-right: .7rem;
+  height: 5vh;
+}
+
+.container-button-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-button-login button {
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  border: 1px solid #bfc1c2;
+  outline-color: #bfc1c2;
+  background: #115e53;
+  display: flex;
+  align-items: center;
+  transition: all ease .4s;
+  margin-left: .9rem;
+}
+
+.container-button-login button span {
+  color: #f1f1f1;
+  margin-left: 1.2rem;
+  font-size: 1.3rem;
+}
+
+.container-button-login button:hover {
+  text-shadow: 12px 17px 12px #666565;
+  border: 1px solid #177938;
+  background: linear-gradient(289.90deg, #177938 0%, #115e53 100%);
+}
+
+.link-create-account {
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: 82px;
+  margin-left: .9rem;
+}
+
+.link-create-account .link-signIn {
+  text-decoration: none;
+  color: #f1f1f1;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  border: 1px solid #bfc1c2;
+  outline-color: #bfc1c2;
+  background: #115e53;
+  transition: all ease .4s;
+}
+
+.link-create-account .link-signIn:hover {
+  text-shadow: 12px 17px 12px #666565;
+  border: 1.5px solid #177938;
+  background: linear-gradient(289.90deg, #177938 0%, #115e53 100%);
+}
