@@ -1,26 +1,27 @@
 import { MapContainer, TileLayer, Marker, Popup  } from 'react-leaflet'
-import { FiLogOut } from 'react-icons/fi'
+import { FiLogOut, FiX } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import '../../styles/pages/home.css'
 import { Helmet } from 'react-helmet'
 import { useEffect, useState } from 'react'
-// import api from '../../services/API_GITHUB'
 import InputSearch from '../../components/Search'
 
 type UserFromGitHub = {
-  userName: string
+  login: string
   name: string
   avatar_url: string
   followers: number
   following: number
-  public_repos: string
 }
 
 function HomeMap() {
 
-  const [userName, setUserName] = useState('')
+  const [login, setLogin] = useState('')
   const [name, setName] = useState('')
   const [avatar, setAvatar] = useState('')
+  const [followers, setFollowers] = useState(0)
+  const [following, setFollowing] = useState(0)
+  const [isShowPopup, setIsShowPopup] = useState(false)
 
   useEffect(() => {
     fetch(`http://api.github.com/users/lucasmiller98`)
@@ -28,20 +29,17 @@ function HomeMap() {
       .then(data => {
         setData(data)
       })
-    
-    // api.get(`users/lucasmiller98`)
-    //   .then(res => {
-    //     setData(res.request)
-    //   })
 
   }, [])
 
-  function setData({ avatar_url }: UserFromGitHub) { 
-    setUserName(userName)
+  function setData({ avatar_url, name, login, followers, following }: UserFromGitHub) { 
+    setLogin(login)
     setName(name)
     setAvatar(avatar_url)
+    setFollowers(followers)
+    setFollowing(following)
   }
-  
+
   return(
     <>
       <Helmet>
@@ -52,11 +50,70 @@ function HomeMap() {
           
           <InputSearch />
         </header>
-        <img src={avatar} alt="My Profile" className='profile-gitHub' /> 
-        <Link to='/login' className='exit-anchor'>
-          <span>Exit</span> 
-          <FiLogOut title='Exit' size={40} color='#133499' />
-        </Link>
+
+        <button type='button' className='my--profile--github' onClick={() => setIsShowPopup(true)}>
+          <img src={avatar} alt="My Profile" className='profile-gitHub' /> 
+        </button>
+
+        { isShowPopup && (
+          <div style={{ display: 'flex' }} className='popup-container'>
+            <div className='popup'>
+              <button className='close' onClick={() => setIsShowPopup(false)}>
+                <FiX size={25} color='#131313' id='closePopup' />
+              </button>
+
+              <section className='account-user'>
+                <span className='span-account-user'>
+                  User name: {login}
+                </span>
+                <span className='span-account-user'>
+                  Name: {name}
+                </span>
+                <span className='span-account-user'>
+                  Followers: {followers}
+                </span>
+                <span className='span-account-user'>
+                  Following: {following}
+                </span>
+              </section>
+
+              <Link to='/login' className='exit-anchor'>
+                <FiLogOut title='Exit' size={30} className='fiLogOut' />
+                <span className='exit-span-anchor'>Exit</span> 
+              </Link>
+            </div>
+          </div>
+        )}
+
+        { !isShowPopup && (
+          <div className='popup-container'>
+            <div className='popup'>
+              <button className='close'>
+                <FiX size={25} color='#131313' id='closePopup' />
+              </button>
+
+              <section className='account-user'>
+                <span className='span-account-user'>
+                  User name: {login}
+                </span>
+                <span className='span-account-user'>
+                  Name: {name}
+                </span>
+                <span className='span-account-user'>
+                  Followers: {followers}
+                </span>
+                <span className='span-account-user'>
+                  Following: {following}
+                </span>
+              </section>
+
+              <Link to='/login' className='exit-anchor'>
+                <FiLogOut title='Exit' size={30} className='fiLogOut' />
+                <span className='exit-span-anchor'>Exit</span> 
+              </Link>
+            </div>
+          </div>
+        )}
        
         <MapContainer 
           center={[-8.1256917,-35.027856]} 
@@ -82,3 +139,11 @@ function HomeMap() {
 }
 
 export default HomeMap
+
+
+// import api from '../../services/API_GITHUB'
+
+// api.get(`users/lucasmiller98`)
+    //   .then(res => {
+    //     setData(res.request)
+    //   })

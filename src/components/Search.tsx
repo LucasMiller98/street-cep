@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import api from '../services/SEARCH_ZIP_CODE_API'
 
 type DataSearchCode = {
   cep: string
@@ -9,13 +10,15 @@ function InputSearch() {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
+    
     fetch(`http://viacep.com.br/ws/${search}/json/`)
       .then(res => res.json())
       .then(data => {
         setData(data)
       })
+
   }, [])
-    
+
   const setData = ({ cep }: DataSearchCode) => {
     setSearch(cep)
   }
