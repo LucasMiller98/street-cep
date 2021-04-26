@@ -1,44 +1,68 @@
-import '../styles/pages/login.css'
-import { FiLogIn } from 'react-icons/fi'
 import { MdAccountBox, Si1Password, IoArrowBack } from 'react-icons/all'
-import Map from '../images/map.svg'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { FiLogIn } from 'react-icons/fi'
 import { Helmet } from 'react-helmet'
+import '../styles/pages/login.css'
+import { useState } from 'react'
 
 function Login() {
 
+  const history = useHistory()
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  function buttonOnClick() {
+    if(email == '' || password == '') {
+      alert('Por favor, preencha tudo!')
+    }else if(email === 'abc@email.com' && password === 'abc123') {
+      alert(`Bem vindo, ${email}`)
+      return history.push('/home')
+    }else{
+      alert('Email e/ou senha incorreta')
+    }
+
+  }  
   
   return(
     <>
       <Helmet>
-        <link rel="shortcut icon" href={Map} />
         <title>Login</title>
       </Helmet>
       <div className='container-form'>
-
         <Link to='/'>
           <IoArrowBack size={60} color='#1a3d39' className='arrow-back' />
         </Link>
-        
         <form>
           <h1 id='h1-login'>ZipCode</h1>
 
           <div className='container-float'>
             <MdAccountBox size={35} color='#f1f1f1' className='MdAccountBox' />
             {/* <label htmlFor="email">Email</label> */}
-            <input type="email" placeholder=' ' />
+            <input 
+              type="email" 
+              placeholder='email' 
+              value={email}
+              onChange={event => setEmail(event.target.value)}
+            />
           </div>
 
           <div className='container-float'>
             {/* <label htmlFor="password">Senha</label> */}
             <Si1Password size={35} color='#f1f1f1' className='Si1Password' />
-            <input type="password" placeholder=' ' />
+            <input 
+              type="password" 
+              placeholder='password' 
+              value={password}
+              onChange={event => setPassword(event.target.value)}
+            />
           </div>
 
           <div className='container-button-login'>
             <button 
-              type='button' 
-              // onClick={handleLogin}
+              type='submit' 
+              id='button-signIn-submit'
+              onClick={buttonOnClick}
             >
               <FiLogIn size={25} color='#f1f1f1' />
               <span>Entrar</span> 

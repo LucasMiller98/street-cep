@@ -20,14 +20,14 @@ function CreateAccount() {
           <div className='text-name'>
             <input 
               type="text" 
-              value='fistName'  
+              value=''  
               // onChange={}
               placeholder='Fist Name'
             />  
 
             <input 
               type="text" 
-              value='lastName'  
+              value=''  
               // onChange={}
               placeholder='Last name'
             />
@@ -36,13 +36,13 @@ function CreateAccount() {
           <div className='div-data'>
             <input 
               type="text"
-              value='mobile'
+              value=''
               placeholder='Mobile number or email'
             />
 
             <input 
               type="password" 
-              value="password"
+              value=""
               // onChange={}
               placeholder='New password'
             />
