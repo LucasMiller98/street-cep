@@ -1,10 +1,10 @@
 import { MapContainer, TileLayer, Marker, Popup  } from 'react-leaflet'
-import { FiLogOut, FiX } from 'react-icons/fi'
+import { FiLogOut, FiXCircle, FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import '../../styles/pages/home.css'
 import { Helmet } from 'react-helmet'
 import { useEffect, useState } from 'react'
-import InputSearch from '../../components/Search'
+// import Aside from '../../components/Aside'
 
 type UserFromGitHub = {
   login: string
@@ -46,20 +46,22 @@ function HomeMap() {
         <title>Home | ZipCode</title>
       </Helmet>
       <div className='homeContainer'>
-        <header id='header-search'>
-          
-          <InputSearch />
+        <header id='header'>
+          <h1>Welcome</h1>
         </header>
-
         <button type='button' className='my--profile--github' onClick={() => setIsShowPopup(true)}>
           <img src={avatar} alt="My Profile" className='profile-gitHub' /> 
         </button>
 
         { isShowPopup && (
           <div style={{ display: 'flex' }} className='popup-container'>
+            
             <div className='popup'>
+              <div className='myProfile-github'>
+                <img src={avatar} alt='My Profile' className='profile-gitHub-popup' />
+              </div>
               <button className='close' onClick={() => setIsShowPopup(false)}>
-                <FiX size={25} color='#131313' id='closePopup' />
+                <FiXCircle size={25} color='#131313' />
               </button>
 
               <section className='account-user'>
@@ -85,35 +87,7 @@ function HomeMap() {
           </div>
         )}
 
-        { !isShowPopup && (
-          <div className='popup-container'>
-            <div className='popup'>
-              <button className='close'>
-                <FiX size={25} color='#131313' id='closePopup' />
-              </button>
-
-              <section className='account-user'>
-                <span className='span-account-user'>
-                  User name: {login}
-                </span>
-                <span className='span-account-user'>
-                  Name: {name}
-                </span>
-                <span className='span-account-user'>
-                  Followers: {followers}
-                </span>
-                <span className='span-account-user'>
-                  Following: {following}
-                </span>
-              </section>
-
-              <Link to='/login' className='exit-anchor'>
-                <FiLogOut title='Exit' size={30} className='fiLogOut' />
-                <span className='exit-span-anchor'>Exit</span> 
-              </Link>
-            </div>
-          </div>
-        )}
+        {/* <Aside /> */}
        
         <MapContainer 
           center={[-8.1256917,-35.027856]} 
@@ -132,6 +106,10 @@ function HomeMap() {
             </Popup>
           </Marker>
         </MapContainer>
+
+        <Link to='/zipcode-app' className='link-to-cep-page' title='mais informações'>
+          <FiArrowRight size={35} />
+        </Link>
         
       </div>
     </>

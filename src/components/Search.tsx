@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import api from '../services/SEARCH_ZIP_CODE_API'
 
 type DataSearchCode = {
   cep: string

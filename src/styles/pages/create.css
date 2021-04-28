@@ -137,6 +137,30 @@ input[type=password] {
 
 .form-container form .div-gender .female, .male {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.form-container form .div-gender .div-radio {
+  background-color: #f1f1f1;
+  border: 1px solid #131313;
+  width: 2vw;
+  height: 4vh;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all ease-out .3s;
+}
+
+.form-container form .div-gender .div-radio:hover {
+  background: #4bd452;
+}
+
+.radio-style-background-color {
+  background-color: #1aac21;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 .form-container form .div-gender input[type=radio] {

@@ -1,7 +1,10 @@
+import { useDebugValue, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/pages/create.css'
 
 function CreateAccount() {
+  const [isGreen, setIsGreen] = useState(false)
+  
   return(
     <>
       <header id='header-create-account'>
@@ -112,12 +115,21 @@ function CreateAccount() {
 
           <div className='div-gender'>
             <div className='female'>
-              <input name='gender' type="radio" id='female' />
+              <div className='div-radio' onClick={() => setIsGreen(true)} >
+                { isGreen && (
+                  <div className='radio-style-background-color' />
+                )}
+              </div>
+                  
               <label htmlFor="female">Female</label>
             </div>
-
+            
             <div className='male'>
-              <input name='gender' type="radio" id='male' />
+              <div className='div-radio' onClick={() => setIsGreen(false)}>
+                { !isGreen && (
+                  <div className='radio-style-background-color' />
+                )}
+              </div> 
               <label htmlFor="male">Male</label>
             </div>  
           </div>

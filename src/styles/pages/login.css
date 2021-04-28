@@ -54,7 +54,7 @@
   padding-top: 13px;
 }
 
-.container-form form .container-float input {
+.container-form form .container-float .inputsForm {
   border-radius: .7rem;
   border: 1px solid #bfc1c2;
   font-size: 1.3rem;
@@ -68,29 +68,34 @@
   background-color: #e2e2e2bb;
 }
 
-.container-form form .container-float input:focus {
+.container-form form .container-float .inputsForm:focus {
   border-bottom: 2px solid #115e53;
   background: #f3f3f3;
 }
 
-.container-form form .container-float input::placeholder {
-  color: transparent;
+.container-form form .container-float .inputsForm::placeholder {
+  color: #303030;
 }
 
-.container-form form label {
+.container-form .container-float label {
   font-size: 1.2rem;
+  color: #000;
   pointer-events: none;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 15px;
+  left: 62px;
   margin-top: 13px;
   transition: all ease-out .3s;
 }
 
-.container-float input:focus + label, .container-float input:not(:placeholder-shown) label {
+.container-float .inputsForm:focus + label, .container-float .inputsForm:not(:placeholder-shown) + label {
   font-size: .8rem;
   margin-top: 0;
   color: #115e53;
+}
+
+.container-float .inputsForm:required:invalid {
+  border-bottom: 2px solid red;
 }
 
 .MdAccountBox, .Si1Password {

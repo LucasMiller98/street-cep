@@ -41,8 +41,9 @@ function Login() {
             {/* <label htmlFor="email">Email</label> */}
             <input 
               type="email" 
-              placeholder='email' 
+              placeholder='Email' 
               value={email}
+              className='inputsForm'
               onChange={event => setEmail(event.target.value)}
             />
           </div>
@@ -52,8 +53,9 @@ function Login() {
             <Si1Password size={35} color='#f1f1f1' className='Si1Password' />
             <input 
               type="password" 
-              placeholder='password' 
+              placeholder='Password' 
               value={password}
+              className='inputsForm'
               onChange={event => setPassword(event.target.value)}
             />
           </div>
