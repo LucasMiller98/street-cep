@@ -1,11 +1,66 @@
-.codeContainer {
-  height: 100vh;
+.codeContainer .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   width: 100vw;
+  height: 20vh;
+  background: linear-gradient(200.90deg, #177938 0%, #115e53 100%);
+  position: relative;
 }
 
-.codeContainer .input-search {
+.codeContainer .header-container #zip-code {
+  color: #f1f1f1;
+  font-size: 3rem;
+}
+
+.codeContainer .header-container .container-search {
+  background-color: #f1f1f1;
+  height: 7vh;
+  width: 80vh;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.codeContainer .header-container .container-search .input-search {
   padding: .7rem 1rem;
   border-radius: 20px;
+  width: 80%;
+  height: 100%;
+  border-radius: 20px;
   outline: none;
-  
+  border: none;
+  font-size: calc(1.4rem - .4px);
+  background-color: #f1f1f1;
+  color: #303030;
+}
+
+.codeContainer .header-container .container-search .input-search::-webkit-search-decoration,
+.codeContainer .header-container .container-search .input-search::-webkit-search-cancel-button,
+.codeContainer .header-container .container-search .input-search::-webkit-search-results-button,
+.codeContainer .header-container .container-search .input-search::-webkit-search-results-decoration {
+  display: none;
+}
+
+.codeContainer .header-container .container-search .input-search::placeholder {
+  font-size: calc(1.3rem - 0.8px);
+}
+
+.codeContainer .header-container .container-search .fiSearch {
+  color: #272727;
+}
+
+.codeContainer .header-container .fiSettings {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: calc(1.4rem - .2px);
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: all ease-out .3s;
+}
+
+.codeContainer .header-container .fiSettings:hover {
+  transform: rotate(40deg);
 }

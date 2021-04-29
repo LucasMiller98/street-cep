@@ -1,22 +1,38 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { FiSearch, FiSettings } from 'react-icons/fi'
 import '../styles/pages/zipcode.css'
+import api from '../services/SEARCH_ZIP_CODE_API'
 
 function ZipCode() {
   const [search, setSearch] = useState('')
   
+  useEffect(() => {
+    api.get(`${search}/json/`)
+      .then((response) => {
+        console.log(response.data)
+      })
+  })
+  
   return(
     <>
       <div className='codeContainer'>
-        <div className='container-search'>
-          <h1>Search your zip code</h1>
-          <input 
-            type="search" 
-            className='input-search' 
-            value={search}
-            placeholder='Search here ...' 
-            onChange={event => setSearch(event.target.value)}
-          />
-        </div>
+        <header className='header-container'>
+          <h1 id='zip-code'>Zip Code</h1>
+          <FiSettings size={40} color='#f1f1f1' className='fiSettings' />
+          <div className='container-search'>
+            <input 
+              type="search" 
+              className='input-search' 
+              value={search}
+              placeholder='Search here ...' 
+              onChange={event => setSearch(event.target.value)}
+            />
+            <FiSearch size={30} className='fiSearch' />
+          </div>
+        </header>
+
+        
+        
       </div>
     </>
   )
