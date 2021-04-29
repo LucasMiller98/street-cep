@@ -1,9 +1,13 @@
-import { useDebugValue, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/pages/create.css'
 
 function CreateAccount() {
   const [isGreen, setIsGreen] = useState(false)
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [mobileNumberOrEmail, setMobileNumberOrEmail] = useState('')
+  const [newPassword, setNewPassword] = useState('')
   
   return(
     <>
@@ -23,15 +27,15 @@ function CreateAccount() {
           <div className='text-name'>
             <input 
               type="text" 
-              value=''  
-              // onChange={}
+              value={firstName}  
+              onChange={event => setFirstName(event.target.value) }
               placeholder='Fist Name'
             />  
 
             <input 
               type="text" 
-              value=''  
-              // onChange={}
+              value={lastName}  
+              onChange={event => setLastName(event.target.value)}
               placeholder='Last name'
             />
           </div>
@@ -39,20 +43,23 @@ function CreateAccount() {
           <div className='div-data'>
             <input 
               type="text"
-              value=''
+              value={mobileNumberOrEmail}
+              onChange={event => setMobileNumberOrEmail(event.target.value)}
               placeholder='Mobile number or email'
             />
 
             <input 
               type="password" 
-              value=""
-              // onChange={}
+              value={newPassword}
+              onChange={event => setNewPassword(event.target.value)}
               placeholder='New password'
             />
           </div>
 
           <h3 id='h3-birthday'>Birthday</h3>
+
           <div id='birthday'>
+
             <select title='months' id="select-months">
               <option value="">Jan</option>
               <option value="">Fev</option>
@@ -95,7 +102,6 @@ function CreateAccount() {
               <option value="">24</option>
               <option value="">25</option>
               <option value="">26</option>
-              <option value="">27</option>
               <option value="">28</option>
               <option value="">29</option>
               <option value="">30</option>
@@ -134,9 +140,9 @@ function CreateAccount() {
             </div>  
           </div>
 
-          <a id='anchor-signUp' href="#">
+          <Link id='anchor-signUp' to="/login">
             Sign Up
-          </a>
+          </Link>
         </form>
       </div>
     </>
