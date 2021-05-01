@@ -47,20 +47,17 @@
   font-size: calc(1.3rem - 0.8px);
 }
 
-.codeContainer .header-container .container-search .fiSearch {
-  color: #272727;
-}
-
-.codeContainer .header-container .fiSettings {
+.codeContainer .header-container .dehaze-icon {
   position: absolute;
   left: 0;
   top: 0;
   margin-top: calc(1.4rem - .2px);
   margin-left: 1rem;
   cursor: pointer;
+  font-size: 40px;
   transition: all ease-out .3s;
 }
 
-.codeContainer .header-container .fiSettings:hover {
-  transform: rotate(40deg);
+codeContainer .header-container .dehaze-icon:hover {
+  transform: translateX(-2px);
 }

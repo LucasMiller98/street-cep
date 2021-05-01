@@ -1,10 +1,11 @@
 import { MapContainer, TileLayer, Marker, Popup  } from 'react-leaflet'
 import { FiLogOut, FiXCircle, FiArrowRight } from 'react-icons/fi'
+import { useHistory } from 'react-router-dom'
+import { MouseEventHandler, useEffect, useState } from 'react'
+import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
-import '../../styles/pages/home.css'
 import { Helmet } from 'react-helmet'
-import { useEffect, useState } from 'react'
-// import Aside from '../../components/Aside'
+import '../../styles/pages/home.css'
 
 type UserFromGitHub = {
   login: string
@@ -65,30 +66,30 @@ function HomeMap() {
               </button>
 
               <section className='account-user'>
-                <span className='span-account-user'>
-                  User name: {login}
-                </span>
-                <span className='span-account-user'>
-                  Name: {name}
-                </span>
-                <span className='span-account-user'>
-                  Followers: {followers}
-                </span>
-                <span className='span-account-user'>
-                  Following: {following}
-                </span>
+                <Button className='button-ui' title='GitHub profile'>
+                  <a target='_blank' href="https://github.com/LucasMiller98">User name: {login}</a>
+                </Button>
+                <Button className='button-ui' title='GitHub profile'>
+                  <a target='_blank' href="https://github.com/LucasMiller98">Name: {name}</a>
+                </Button>
+                <Button className='button-ui' title='GitHub profile'>
+                  <a target='_blank' href="https://github.com/LucasMiller98">Followers: {followers}</a>
+                </Button>
+                <Button className='button-ui' title='GitHub profile'>
+                  <a target='_blank' href="https://github.com/LucasMiller98">Following: {following}</a>
+                </Button>
               </section>
 
-              <Link to='/login' className='exit-anchor'>
-                <FiLogOut title='Exit' size={30} className='fiLogOut' />
-                <span className='exit-span-anchor'>Exit</span> 
+              <Link to='/login' style={{ textDecoration: 'none' }}>
+                <Button className='exit-anchor link-login-anhor'>
+                  <FiLogOut title='Exit' size={30} className='fiLogOut' />
+                  <span className='exit-span-anchor'>EXIT</span>
+                </Button>
               </Link>
             </div>
           </div>
         )}
 
-        {/* <Aside /> */}
-       
         <MapContainer 
           center={[-8.1256917,-35.027856]} 
           zoom={15} 
@@ -117,11 +118,3 @@ function HomeMap() {
 }
 
 export default HomeMap
-
-
-// import api from '../../services/API_GITHUB'
-
-// api.get(`users/lucasmiller98`)
-    //   .then(res => {
-    //     setData(res.request)
-    //   })

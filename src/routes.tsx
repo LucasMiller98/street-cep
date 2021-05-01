@@ -3,7 +3,7 @@ import HomeMap from './pages/Home/HomeMap'
 import CreateAccount from './pages/Create'
 import Login from './pages/Login'
 import WelcomePage from './pages/Welcome'
-import ZipCode from './pages/ZipCode'
+import ZipCode from './pages/ZipCodeSearch'
 
 function Routes() {
   return(
