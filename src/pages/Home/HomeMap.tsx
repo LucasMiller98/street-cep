@@ -1,10 +1,11 @@
 import { MapContainer, TileLayer, Marker, Popup  } from 'react-leaflet'
 import { FiLogOut, FiXCircle, FiArrowRight } from 'react-icons/fi'
-import { useHistory } from 'react-router-dom'
-import { MouseEventHandler, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+import { Spinner } from 'react-spinkit'
+// import { withGoogleMap, GoogleMap } from 'react-google-maps'
 import '../../styles/pages/home.css'
 
 type UserFromGitHub = {
@@ -51,7 +52,13 @@ function HomeMap() {
           <h1>Welcome</h1>
         </header>
         <button type='button' className='my--profile--github' onClick={() => setIsShowPopup(true)}>
-          <img src={avatar} alt="My Profile" className='profile-gitHub' /> 
+          { !avatar ? (
+            <div className='div-loading-avatar'>
+              <p>Loading avatar...</p>
+            </div>
+          ) : (
+            <img src={avatar} alt="My Profile" className='profile-gitHub' /> 
+          ) }
         </button>
 
         { isShowPopup && (
@@ -103,7 +110,7 @@ function HomeMap() {
             position={[-8.1256917,-35.027856]}
           >
             <Popup closeButton={true} className='map-popup'>
-              Hello World
+              Você está aqui
             </Popup>
           </Marker>
         </MapContainer>

@@ -176,3 +176,12 @@
   filter: brightness(.8);
   color: #fff;
 }
+
+.div-loading-avatar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #131313;
+  font-size: 1.3rem;
+  font-weight: 600;
+}

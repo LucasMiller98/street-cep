@@ -88,6 +88,14 @@
   transition: all ease-out .3s;
 }
 
+.inputsForm:invalid {
+  border: 1px solid #f00;
+}
+
+.inputsForm:valid {
+  border: 1px solid #bfc1c2;
+}
+
 .container-float .inputsForm:focus + label, .container-float .inputsForm:not(:placeholder-shown) + label {
   font-size: .8rem;
   margin-top: 0;

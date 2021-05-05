@@ -1,0 +1,78 @@
+.loading-img-github-myProfile {
+  display: flex;
+  align-items: center;
+}
+
+.loading-img {
+  color: #0fdf54;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.sidebar-settings-container-main {
+  display: none; 
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 20vw;
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, .5);
+}
+
+#hidden-button {
+  background: transparent;
+  border: 0;
+}
+
+.sidebar-settings-container-main .settings span {
+  color: #f1f1f1;
+  font-size: 1.3rem;
+}
+
+.sidebar-settings-container-main .settings a {
+  text-decoration: none;
+}
+
+.border-button-ui {
+  border-bottom: 1rem solid #606060;
+}
+
+.sidebar-settings-container-main .figure-myProfile {
+  position: absolute;
+  top: 16.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-settings-container-main .figure-myProfile img {
+  border-radius: 50%;
+  border: 1.7px solid #606060;
+  width: 45%;
+  height: 45%;
+}
+
+#button-ui-back {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  justify-content: space-between;
+}
+
+.fiX-settings {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: all ease-out .3s;
+  margin-top: 2%;
+  margin-right: 4%;
+}
+
+.fiX-settings:hover {
+  transform: translateY(-2px);
+}

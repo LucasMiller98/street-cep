@@ -45,6 +45,7 @@ function Login() {
               value={email}
               className='inputsForm'
               onChange={event => setEmail(event.target.value)}
+              required
             />
           </div>
 
@@ -57,6 +58,7 @@ function Login() {
               value={password}
               className='inputsForm'
               onChange={event => setPassword(event.target.value)}
+              required
             />
           </div>
 
