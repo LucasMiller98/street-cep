@@ -22,6 +22,7 @@
 
 #header-create-account .anchor-login:hover {
   border: 1px solid #1a3d39;
+  color: #f1f1f1;
 }
 
 #header-create-account #h1-code {
@@ -33,40 +34,41 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 35vh;
+  height: 37vh;
   width: 100vw;
 }
 
-.form-container form {
+.form-container #form-create-account {
   display: flex;
   flex-direction: column;
   height: 20vh;
   margin-top: 3rem;
 }
 
-.form-container form .text-name {
+.form-container #form-create-account .text-name {
   display: inherit;
   gap: 1rem;
   margin-bottom: .7rem;
 }
 
-.form-container form .div-data {
+.form-container #form-create-account .div-data {
   display: inherit;
   flex-direction: column;
   gap: .7rem;
 }
 
-.form-container form #birthday {
+.form-container #form-create-account #birthday {
   display: inherit;
   gap: .9rem;
   margin: 1rem 0;
 }
 
-.form-container form #h3-birthday {
+.form-container #form-create-account #h3-birthday {
   margin-top: 1rem;
+  margin-bottom: 0;
 }
 
-.form-container form #birthday #select-months, #select-day, #select-year {
+.form-container #form-create-account #birthday #select-months, #select-day, #select-year {
   border: 1px solid #131313;
   border-radius: 20px;
   cursor: pointer;
@@ -78,7 +80,7 @@
   color: #131313;
 }
 
-.form-container form #birthday 
+.form-container #form-create-account #birthday 
 #select-months, 
 #select-day, 
 #select-year, 
@@ -90,7 +92,7 @@ input[type=password] {
   background-color: #e2e2e2bb;
 }
 
-.form-container form input[type=text], input[type=password] {
+.form-container #form-create-account input[type=text], input[type=password] {
   border: 1.1px solid #1a3d39;
   border-radius: 20px;
   font: 500 1.3rem Lexend, sans-serif;
@@ -98,17 +100,15 @@ input[type=password] {
   padding: 1rem 1.2rem;
 }
 
-.form-container form input[type=text]:focus, input[type=password]:focus, .form-container form #birthday 
+.form-container #form-create-account input[type=text]:focus, input[type=password]:focus, .form-container form #birthday 
 #select-months:hover, 
 #select-day:hover, 
 #select-year:hover {
   border-bottom: 2px solid #115e53;
   background: #f3f3f3;
 }
-
-.form-container form #h3-gender, #h3-birthday {
-  font-size: 1.8rem;
-  margin-left: .9rem;
+#h3-Create-a-new-account {
+  margin-bottom: 0;
 }
 
 .form-container #create-new-account-easily {
@@ -126,33 +126,33 @@ input[type=password] {
   font-size: 1.9rem;
 }
 
-.form-container form .div-gender {
+.form-container #form-create-account .div-gender {
   display: inherit;
   align-items: center;
   justify-content: start;
   gap: 5rem;
-  margin: 1rem 0;
+  /* margin-top: 1rem; */
   width: 70%;
 }
 
-.form-container form .div-gender .female, .male {
+.form-container #form-create-account .div-gender .female, .male {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.form-container form .div-gender .div-radio {
+.form-container #form-create-account .div-gender .div-radio {
   background-color: #f1f1f1;
   border: 1px solid #131313;
-  width: 2vw;
+  width: 1.9vw;
   height: 4vh;
   cursor: pointer;
   border-radius: 50%;
   transition: all ease-out .3s;
 }
 
-.form-container form .div-gender .div-radio:hover {
+.form-container #form-create-account .div-gender .div-radio:hover {
   background: #4bd452;
 }
 
@@ -163,19 +163,11 @@ input[type=password] {
   border-radius: 50%;
 }
 
-.form-container form .div-gender input[type=radio] {
-  width: 30%;
-  color: #1a3d39;
-  font-style: #005000;
-  height: 3vh;
-  cursor: pointer;
-}
-
-.form-container form .div-gender label {
+.form-container #form-create-account .div-gender label {
   font-size: 1.7rem;
 }
 
-.form-container form #anchor-signUp {
+.form-container #form-create-account #anchor-signUp {
   text-decoration: none;
   color: #f1f1f1;
   font-weight: 500;
@@ -189,7 +181,7 @@ input[type=password] {
   transition: all ease-out .3s;
 }
 
-.form-container form #anchor-signUp:hover, .anchor-login:hover {
+.form-container #form-create-account #anchor-signUp:hover, .anchor-login:hover {
   transform: translateY(-2px);
   filter: brightness(.95);
 }

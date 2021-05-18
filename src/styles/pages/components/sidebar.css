@@ -11,7 +11,7 @@
 }
 
 .sidebar-settings-container-main {
-  display: none; 
+  display: flex; 
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -20,6 +20,8 @@
   position: absolute;
   top: 0;
   background: rgba(0, 0, 0, .5);
+  transition: all ease .5s;
+  z-index: 999;
 }
 
 #hidden-button {

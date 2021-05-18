@@ -13,7 +13,7 @@ function Login() {
   const [password, setPassword] = useState('')
 
   function buttonOnClick() {
-    if(email == '' || password == '') {
+    if(email === '' || password === '') {
       alert('Por favor, preencha tudo!')
     }else if(email === 'abc@email.com' && password === 'abc123') {
       alert(`Bem vindo, ${email}`)
@@ -43,9 +43,9 @@ function Login() {
               type="email" 
               placeholder='Email' 
               value={email}
+              id='input-email-form'
               className='inputsForm'
               onChange={event => setEmail(event.target.value)}
-              required
             />
           </div>
 
@@ -56,9 +56,9 @@ function Login() {
               type="password" 
               placeholder='Password' 
               value={password}
+              id='input-password'
               className='inputsForm'
               onChange={event => setPassword(event.target.value)}
-              required
             />
           </div>
 

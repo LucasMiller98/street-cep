@@ -19,11 +19,11 @@ function CreateAccount() {
       <div className="form-container">
 
       <div id='create-new-account-easily'>
-        <h3>Create a New Account</h3>
+        <h3 id='h3-Create-a-new-account'>Create a New Account</h3>
         <span>It’s quick and easy.</span>
       </div>
 
-        <form>
+        <form id='form-create-account'>
           <div className='text-name'>
             <input 
               type="text" 
@@ -56,8 +56,9 @@ function CreateAccount() {
             />
           </div>
 
-          <h3 id='h3-birthday'>Birthday</h3>
+          
 
+          <h3 id='h3-birthday'>Birthday</h3>
           <div id='birthday'>
 
             <select title='months' id="select-months">

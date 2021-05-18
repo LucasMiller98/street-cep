@@ -23,6 +23,11 @@
   justify-content: space-evenly;
 }
 
+.codeContainer .header-container .container-search button {
+  border: 0;
+  background: none;
+}
+
 .codeContainer .header-container .container-search .input-search {
   padding: .7rem 1rem;
   border-radius: 20px;
@@ -62,7 +67,7 @@
   transition: all ease-out .3s;
 }
 
-codeContainer .header-container .dehaze-icon:hover {
+.codeContainer .header-container .dehaze-icon:hover {
   transform: translateX(-2px);
 }
 
@@ -72,7 +77,11 @@ codeContainer .header-container .dehaze-icon:hover {
   justify-content: center;
   flex-direction: column;
   width: 100vw;
-  height: 80vh;
+  height: 84vh;
+}
+
+.leaflet-control-zoom {
+  display: none;
 }
 
 #form-zipCode {
@@ -116,5 +125,17 @@ codeContainer .header-container .dehaze-icon:hover {
   color: #131313;
   font-size: 1.3rem;
   font-weight: 600;
-  
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-spinner {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -51,8 +51,8 @@
 .homeContainer .leaflet-control-zoom {
   height: 0;
   width: 0;
-  position: relative;
-  top: 690px;
+  position: absolute;
+  top: 650px;
 }
 
 .homeContainer .exit-anchor.link-login-anhor {
@@ -184,4 +184,11 @@
   color: #131313;
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+.map-popup {
+  border-radius: 20px;
+  color: rgba(255, 255, 255, .6);
+  padding: 1.2rem;
+  font-size: 1.1rem;
 }

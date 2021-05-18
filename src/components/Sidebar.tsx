@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import '../styles/pages/components/sidebar.css'
 import { FiArrowLeft , FiLogOut } from 'react-icons/fi'
 import { IoLanguage, MdAccountBox, FiX } from 'react-icons/all'
+import * as ReactBootStrap from 'react-bootstrap'
 
 type UseGitHubApi = {
   avatar_url: string
@@ -22,7 +23,7 @@ function Sidebar() {
       .then(response => response.json())
       .then(data => {
         setDatafromGitHub(data)
-      })
+    })
   })
 
   const setDatafromGitHub = ({ avatar_url, name }: UseGitHubApi) => {
@@ -32,112 +33,50 @@ function Sidebar() {
   
   return(
     <>
-      { isDisplayingSideBar && (
-        <div style={{ display: 'flex' }} className='sidebar-settings-container-main'>
-          <FiX size={30} color='#f1f1f1' className='fiX-settings' onClick={() => setCurrentStateSideBarToFalse()} />
-          <figure className='figure-myProfile'>
-            { !avatar_url ? (
-              <section className='loading-img-github-myProfile'>
-                  <span className='loading-img'>Loading image...</span>
-              </section>
-            ) : (
-              <img src={avatar_url} alt='My Profile' />
-            ) }
-          </figure>
-          <div id='container-box'>
-            <section className='settings'>
+      <div className={isDisplayingSideBar ? 'sidebar-settings-container-main' : ''}>
+        <FiX size={30} color='#f1f1f1' className='fiX-settings' onClick={() => setCurrentStateSideBarToFalse()} />
+        <figure className='figure-myProfile'>
+          { !avatar_url ? (
+            <section className='loading-img-github-myProfile'>
+              <ReactBootStrap.Spinner animation="border" style={{ color:'#0fdf54' }} />
+            </section>
+          ) : (
+            <img src={avatar_url} alt='My Profile' />
+          ) }
+        </figure>
+        <div id='container-box'>
+          <section className='settings'>
+            <Button className='button-ui-back'>
+              <MdAccountBox size={30} color='#f1f1f1' />
+              <span>{name}</span>
+            </Button>
+          </section>
+          <section className='settings'>
+            <Button className='button-ui-back'>
+              <IoLanguage size={30} color='#f1f1f1' />
+              <span>Languanges</span> 
+            </Button>
+          </section>
+          <section className='settings'>
+            <Link to='/home'>
               <Button className='button-ui-back'>
-                <MdAccountBox size={30} color='#f1f1f1' />
-                <span>{name}</span>
+                <FiArrowLeft size={30} color='#f1f1f1' />
+                <span>Back</span>
               </Button>
-            </section>
-            <section className='settings'>
+            </Link>
+          </section>
+          <section className='settings'>
+            <Link to='/login'>
               <Button className='button-ui-back'>
-                <IoLanguage size={30} color='#f1f1f1' />
-                <span>Languanges</span> 
+                <FiLogOut size={30} color='#f1f1f1' />
+                <span>Exit</span>
               </Button>
-            </section>
-            <section className='settings'>
-              <Link to='/home'>
-                <Button className='button-ui-back'>
-                  <FiArrowLeft size={30} color='#f1f1f1' />
-                  <span>Back</span>
-                </Button>
-              </Link>
-            </section>
-            <section className='settings'>
-              <Link to='/login'>
-                <Button className='button-ui-back'>
-                  <FiLogOut size={30} color='#f1f1f1' />
-                  <span>Exit</span>
-                </Button>
-              </Link>          
-            </section>
-          </div>
+            </Link>          
+          </section>
         </div>
-      ) }
+      </div>
     </>
   )
 }
 
 export default Sidebar
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* { isDisplayingOnScreen && (
-        <div className='sidebar-settings-container-main' style={{ display: 'flex' }}>
-          <FiX size={30} color='#f1f1f1' className='fiX-settings' onClick={() => setIsDisplayingOnScreen(false)} />
-          <figure className='figure-myProfile'>
-            { !avatar_url ? (
-              <section className='loading-img-github-myProfile'>
-                  <span className='loading-img'>Loading image...</span>
-              </section>
-            ) : (
-              <img src={avatar_url} alt='My Profile' />
-            ) }
-          </figure>
-          <div id='container-box'>
-            <section className='settings'>
-              <Button className='button-ui-back'>
-                <MdAccountBox size={30} color='#f1f1f1' />
-                <span>{name}</span>
-              </Button>
-            </section>
-            <section className='settings'>
-              <Button className='button-ui-back'>
-                <IoLanguage size={30} color='#f1f1f1' />
-                <span>Languanges</span> 
-              </Button>
-            </section>
-            <section className='settings'>
-              <Link to='/home'>
-                <Button className='button-ui-back'>
-                  <FiArrowLeft size={30} color='#f1f1f1' />
-                  <span>Back</span>
-                </Button>
-              </Link>
-            </section>
-            <section className='settings'>
-              <Link to='/login'>
-                <Button className='button-ui-back'>
-                  <FiLogOut size={30} color='#f1f1f1' />
-                  <span>Exit</span>
-                </Button>
-              </Link>          
-            </section>
-          </div>
-        </div>
-      ) } */}
