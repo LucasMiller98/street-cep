@@ -17,6 +17,8 @@
   transition: all ease-out .3s;
   margin-top: 1rem;
   margin-left: 1rem;
+  color: #1a3d39;
+  font-size: 60px;
 }
 
 .container-form .arrow-back:hover {
@@ -30,6 +32,7 @@
   flex-direction: column;
   width: 40%;
   max-width: 1080px;
+  min-width: 444px;
   height: 75.2%;
   color: #f1f1f1;
   background: linear-gradient(#115e53, #177938);
@@ -55,30 +58,19 @@
 }
 
 .container-form form .container-float .inputsForm {
-  border-radius: .7rem;
-  border: 1px solid #bfc1c2;
   font-size: 1.3rem;
   outline: none;
   width: 100%;
-  min-width: 180px;
-  transition: all ease-out .3s;
+  min-width: 20vw;
   height: 7vh;
   padding-left: 1rem;
   color: #000000;
-  background-color: #e2e2e2bb;
 }
 
-#input-email-form {
-  width: 19.3rem;
-}
-
-.container-form form .container-float .inputsForm:focus {
-  border-bottom: 2px solid #115e53;
-  background: #f3f3f3;
-}
-
-.container-form form .container-float .inputsForm::placeholder {
-  color: #303030;
+.container-form form .container-float .inputsForm {
+  color: #000;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 
 .MdAccountBox, .Si1Password {
@@ -93,7 +85,7 @@
 }
 
 .container-button-login button {
-  padding: 1rem 2rem;
+  padding: .7rem 1rem;
   border-radius: 20px;
   border: 1px solid #bfc1c2;
   outline-color: #bfc1c2;
@@ -104,9 +96,14 @@
   margin-left: .9rem;
 }
 
+#button-signIn-submit {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
 .container-button-login button span {
   color: #f1f1f1;
-  margin-left: 1.2rem;
+  margin-left: .7rem;
   font-size: 1.3rem;
 }
 
@@ -119,7 +116,7 @@
 .link-create-account {
   font-size: 1.2rem;
   position: absolute;
-  bottom: 82px;
+  bottom: 108px;
   margin-left: .9rem;
 }
 
@@ -142,3 +139,34 @@
   background: linear-gradient(289.90deg, #177938 0%, #115e53 100%);
 }
 
+@media(max-width: 760px) {
+  .container-form form #h1-login {
+    font-size: 36px;
+  }
+}
+
+@media(max-width: 360px) {
+  .container-form form {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .container-form .arrow-back {
+    z-index: 1;
+    color: #f1f1f1;
+    font-size: 45px;
+    margin-top: 30px;
+  }
+
+  .container-button-login {
+    margin-top: 30px;
+  }
+
+  .link-create-account {
+    bottom: 135px;
+  }
+
+  .container-form form .container-float .inputsForm {
+    min-width: 74vw;
+  }
+}

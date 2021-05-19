@@ -3,7 +3,15 @@ import { Link, useHistory } from 'react-router-dom'
 import { FiLogIn } from 'react-icons/fi'
 import { Helmet } from 'react-helmet'
 import '../styles/pages/login.css'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
+import { 
+  Button, 
+  Input, 
+  FormControl,
+  Theme,
+  createStyles,
+  makeStyles,
+} from '@material-ui/core'
 
 function Login() {
 
@@ -11,6 +19,15 @@ function Login() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const useStyles = makeStyles((theme: Theme) => 
+    createStyles({
+      formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+      }
+    })
+  )
 
   function buttonOnClick() {
     if(email === '' || password === '') {
@@ -22,7 +39,11 @@ function Login() {
       alert('Email e/ou senha incorreta')
     }
 
-  }  
+  } 
+  
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+  }
 
   return(
     <>
@@ -31,19 +52,18 @@ function Login() {
       </Helmet>
       <div className='container-form'>
         <Link to='/'>
-          <IoArrowBack size={60} color='#1a3d39' className='arrow-back' />
+          <IoArrowBack className='arrow-back' />
         </Link>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1 id='h1-login'>ZipCode</h1>
 
           <div className='container-float'>
             <MdAccountBox size={35} color='#f1f1f1' className='MdAccountBox' />
             {/* <label htmlFor="email">Email</label> */}
-            <input 
+            <Input 
               type="email" 
               placeholder='Email' 
               value={email}
-              id='input-email-form'
               className='inputsForm'
               onChange={event => setEmail(event.target.value)}
             />
@@ -52,30 +72,29 @@ function Login() {
           <div className='container-float'>
             {/* <label htmlFor="password">Senha</label> */}
             <Si1Password size={35} color='#f1f1f1' className='Si1Password' />
-            <input 
+            <Input 
               type="password" 
               placeholder='Password' 
               value={password}
-              id='input-password'
               className='inputsForm'
               onChange={event => setPassword(event.target.value)}
             />
           </div>
 
           <div className='container-button-login'>
-            <button 
+            <Button 
               type='submit' 
               id='button-signIn-submit'
               onClick={buttonOnClick}
             >
               <FiLogIn size={25} color='#f1f1f1' />
-              <span>Entrar</span> 
-            </button>
+              <span>Login</span> 
+            </Button>
           </div>
 
           <div className='link-create-account'>
             <Link to='/create' className='link-signIn'>
-              Crie uma nova conta
+              Create a new account
             </Link>
           </div>
           

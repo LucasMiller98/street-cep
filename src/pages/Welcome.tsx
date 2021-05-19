@@ -19,8 +19,8 @@ function WelcomePage() {
             <p>Consulte o seu CEP aqui.</p>  
           </main>
 
-          <Link to='/login' className='start-button'>
-            <strong>Faça o seu login</strong>
+          <Link to='/login' id='start-button'>
+            <strong>Login</strong>
             <FaAngleRight size={25} color='#f1f1f1' />
           </Link>
         </div>

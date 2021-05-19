@@ -85,7 +85,7 @@ function ZipCodeSearch() {
       navigator.geolocation.watchPosition((position) => {
         setPosition([position.coords.latitude, position.coords.longitude])
       }, (error) => {
-        console.log(error)
+        console.error(error)
       })
     }
   }, [navigator.geolocation.watchPosition])

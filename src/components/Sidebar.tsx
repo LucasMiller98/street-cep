@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react'
 import { useContextApi } from '../ContextApi/Context'
 import { Link } from 'react-router-dom'
 import '../styles/pages/components/sidebar.css'
-import { FiArrowLeft , FiLogOut } from 'react-icons/fi'
-import { IoLanguage, MdAccountBox, FiX } from 'react-icons/all'
+import { IoLanguage, MdAccountBox, FiX, FiArrowLeft , FiLogOut } from 'react-icons/all'
 import * as ReactBootStrap from 'react-bootstrap'
 
 type UseGitHubApi = {
@@ -34,7 +33,7 @@ function Sidebar() {
   return(
     <>
       <div className={isDisplayingSideBar ? 'sidebar-settings-container-main' : ''}>
-        <FiX size={30} color='#f1f1f1' className='fiX-settings' onClick={() => setCurrentStateSideBarToFalse()} />
+        <FiX size={35} color='#f1f1f1' className='fiX-settings' onClick={() => setCurrentStateSideBarToFalse()} />
         <figure className='figure-myProfile'>
           { !avatar_url ? (
             <section className='loading-img-github-myProfile'>
