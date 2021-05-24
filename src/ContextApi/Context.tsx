@@ -15,8 +15,6 @@ type ProviderProps = {
 export const ContextProvider = ({ children }: ProviderProps) => {
   const [isDisplayingSideBar, setIsDisplayingSideBar] = useState(false)
 
-  
-
   const setCurrentStateSideBarTrue = () => {
     setIsDisplayingSideBar(true)
   }

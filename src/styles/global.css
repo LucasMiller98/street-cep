@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+::selection {
+  color: #3df;
+}
+
 @media (max-width: 1080px) {
   /* 16 * 0,9375 */
   html {

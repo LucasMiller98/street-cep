@@ -1,6 +1,5 @@
 import { useState, useEffect, FormEvent } from 'react'
 import Leaflet from 'leaflet'
-import Button from '@material-ui/core/Button'
 import mapPin from '../images/pin.svg'
 import { FiSearch } from 'react-icons/fi'
 import '../styles/pages/zipcode.css'
@@ -9,7 +8,6 @@ import DehazeIcon from '@material-ui/icons/Dehaze';
 import Sidebar from '../components/Sidebar';
 import { useContextApi } from '../ContextApi/Context'
 import InputMask from 'react-input-mask'
-import * as ReactBootStrap from 'react-bootstrap'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
 type SetDataZip = {
@@ -24,7 +22,7 @@ type SetDataZip = {
 }
 
 function ZipCodeSearch() {
-  document.title = 'ZipCode'
+  document.title = 'Search a potal code'
   
   const { isDisplayingSideBar, setCurrentStateSideBarTrue } = useContextApi()
   const latitude = -8.1309176
@@ -39,7 +37,6 @@ function ZipCodeSearch() {
   const [ibge, setIbge] = useState('')
   const [uf, setUf] = useState('')
   const [ddd, setDdd] = useState('')
-  const [loading, setLoading] = useState(false)
   const [position, setPosition] = useState<Number[]>([])
   
   const mapPinIcon = Leaflet.icon({
@@ -49,13 +46,10 @@ function ZipCodeSearch() {
     popupAnchor: [170, 2],
   })
 
-  useEffect(() => {
-    api.get(`${search}/json`)
-      .then(response => {
-        setDataZipCode(response.data)
-      })
-      setLoading(true)
-  }, [search])
+  const getApi = async () => {
+    const response = await api.get(`${search}/json`)
+    return await response.data
+  }
 
   function setDataZipCode({ cep, logradouro, complemento, bairro, localidade, uf, ddd, ibge }: SetDataZip) {
     setIbge(ibge)
@@ -68,7 +62,7 @@ function ZipCodeSearch() {
     setLocalidade(localidade)
   }
 
-  function clearDataForm() {
+  function clearData() {
     setBairro('')
     setCep('')
     setComplemento('')
@@ -92,6 +86,18 @@ function ZipCodeSearch() {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
+    const inputSearch = document.getElementsByTagName('input')[0].value
+    const removeDash = inputSearch.replace(/\_|-/g, '')
+
+    if(removeDash.length < 8) {
+      alert('Type your postal code!')
+      clearData()
+    }else{
+      alert('Postal code found!')
+      getApi().then(response => {
+        setDataZipCode(response)
+      })
+    }
   }
 
   return(
@@ -105,20 +111,21 @@ function ZipCodeSearch() {
           <DehazeIcon style={{ color: '#f1f1f1' }} className='dehaze-icon' onClick={() => setCurrentStateSideBarTrue()} />
 
           <form onSubmit={handleSubmit} className='container-search'>
-            <InputMask type='search' mask='99999-999' value={search} onChange={event => setSearch(event.target.value)} className='input-search' placeholder='Search here ...' />
-
-            <FiSearch size={30} />
+            <InputMask type='search' mask='99999-999' value={search} onChange={event => setSearch(event.target.value)} className='input-search' id='test' placeholder='Search here ...' />
+            <button type='submit'>
+              <FiSearch size={30} />
+            </button>
           </form>
 
         </header>
     
         <div id='content-main'>
 
-        <MapContainer
-          center={[latitude, longitude]}
-          zoom={15}
-          style={{ width: '100vw', height: '100vh' }}
-        >
+          <MapContainer
+            center={[latitude, longitude]}
+            zoom={15}
+            style={{ width: '100vw', height: '100vh' }}
+          >
               <TileLayer url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png' />
             <Marker
               icon={mapPinIcon}
@@ -129,9 +136,10 @@ function ZipCodeSearch() {
                 minWidth={240}
                 maxWidth={240}
                 className='map-popup'
+                // onOpen={handleSubmit}
               >
                 { cep ? (
-                  <div>
+                  <section>
                     <p>
                       Logradouro: { logradouro }
                     </p>
@@ -140,6 +148,9 @@ function ZipCodeSearch() {
                     </p>
                     <p>
                       Localidade: { localidade }
+                    </p>
+                    <p>
+                      UF: ({ uf })
                     </p>
                     { complemento && (
                       <p>
@@ -150,58 +161,20 @@ function ZipCodeSearch() {
                       DDD: ({ ddd })
                     </p>
                     <p>
+                      IBGE: { ibge }
+                    </p>
+                    <p>
                       Posição: { position }
                     </p>
-                  </div>
+                  </section>
                 ) : (
-                  <span>Postal code do not found or do not type. Pleace, type your postal code!</span>
+                  <p>Postal code do not found or do not type. Pleace, type your postal code!</p>
                 )}
               </Popup>
             </Marker>
           
           </MapContainer>
 
-          {/* { cep ? (
-            <h1 id='h1-zipCode-found'>The postal code {cep} was found with successful!</h1>
-          ): (
-            <h1 className='h1-zipCode-dontFound'>Type the postal code of your street!</h1>
-          )}
-
-          { loading ? (
-            ''
-          ) : <ReactBootStrap.Spinner animation='border' /> }
-
-          { search && !cep && (
-            <h1 className='h1-zipCode-dontFound'>Postal code do not found or do not type. Pleace, type your postal code!</h1>
-          ) }
-          <form id='form-zipCode'>
-            <label className='label-display-data-from-api' htmlFor="logradouro">Logradouro</label>
-            <input className='input-display-data-from-api' disabled type="text" value={logradouro} onChange={event => setLogradouro(event.target.value)} />
-
-            <label className='label-display-data-from-api' htmlFor="localicade">Localidade</label>
-            <input className='input-display-data-from-api' disabled type="text" value={localidade} onChange={event => setLocalidade(event.target.value)} />
-
-            <label className='label-display-data-from-api' htmlFor="bairro">Bairro</label>
-            <input className='input-display-data-from-api' disabled type="text" value={bairro} onChange={event => setBairro(event.target.value)} />
-
-            <label className='label-display-data-from-api' htmlFor="complemento">Complemento</label>
-            <input className='input-display-data-from-api' disabled type="text" value={complemento} onChange={event => setComplemento(event.target.value)} />
-            
-            <label className='label-display-data-from-api' htmlFor="complemento">DDD</label>
-            <InputMask mask='(99)' className='input-display-data-from-api' disabled type="text" value={ddd} onChange={event => setDdd(event.target.value)} />
-            
-            <label className='label-display-data-from-api' htmlFor="complemento">UF</label>
-            <input className='input-display-data-from-api' disabled type="text" value={uf} onChange={event => setUf(event.target.value)} />
-
-            <label className='label-display-data-from-api' htmlFor="complemento">IBGE</label>
-            <input className='input-display-data-from-api' disabled type="text" value={ibge} onChange={event => setIbge(event.target.value)} />
-
-            <Button id='button-ui-material-styles'>
-              <button type='reset' onClick={clearDataForm} id='button-submit'>
-                <span>Reset</span>
-              </button>
-            </Button>
-          </form> */}
         </div>
           
       </div>

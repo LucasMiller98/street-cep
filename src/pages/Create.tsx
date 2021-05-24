@@ -1,21 +1,19 @@
 import { 
-  Container, 
   Input, 
   Select, 
-  InputLabel, 
-  FormHelperText, 
-  FormControlLabel, 
+  InputLabel,  
   makeStyles,
-  NativeSelect,
   Theme,
   createStyles,
   FormControl,
   MenuItem
 } from '@material-ui/core'
 
-import { ChangeEvent, FormEvent, useState } from 'react'
+import apiFake from '../services/createUseApi';
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/pages/create.css'
+import typeCreate from './types/typeCreate'
 
 const useStyles = makeStyles((theme: Theme) => 
     createStyles({
@@ -30,6 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
   )
 
 function CreateAccount() {
+  document.title = 'Create a new account'
+  
   const [isGreen, setIsGreen] = useState(false)
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -43,6 +43,9 @@ function CreateAccount() {
   const [isOpenMonths, setIsOpenMonths] = useState(false)
   const [isOpenDay, setIsOpenDay] = useState(false)
   const [isOpenYear, setIsOpenYear] = useState(false)
+  const [firstNameApi, setFirstNameApi] = useState('')
+  const [lastNameApi, setLastNameApi] = useState('')
+  const [email, setEmail] = useState('')
 
   const handleChangeMonths = (event: ChangeEvent<{ value: unknown }>) => {
     setMonths(event.target.value as string)
@@ -80,57 +83,76 @@ function CreateAccount() {
     setIsOpenYear(true)
   }
 
+  useEffect(() => {
+    apiFake.get(`user`).then(response => {
+      getApiFake(response.data)
+    })
+  }, [])
+
+  const getApiFake = ({ firstNameUser, lastNameUser }: typeCreate) => {
+    console.log(firstNameUser)
+    setFirstNameApi(firstNameUser)
+    setLastNameApi(lastNameUser)
+  }
+
   return(
     <>
       <header id='header-create-account'>
         <h1 id='h1-code'>ZipCode</h1>
-        <Link to='/login' className='anchor-login'>Login</Link>
+        <Link to='/' className='anchor-signUp'>Sign Up</Link>
+        
       </header>
 
       <div className="form-container">
 
         <div id='create-new-account-easily'>
           <h3 id='h3-Create-a-new-account'>Create a New Account</h3>
-          <span>It’s quick and easy.</span>
+          <span>It’s quick and easy. {firstNameApi} {lastNameApi}</span>
+          
         </div>
         <section id='form-create-account'>
-        <FormControl className={classes.formControl}>
           <div className='text-name'>
-            <Input 
-              type="text" 
-              value={firstName}  
-              onChange={event => setFirstName(event.target.value) }
-              placeholder='First Name'
-              className='inputsData'
-            />  
-
-            <Input 
-              type="text" 
-              value={lastName}  
-              onChange={event => setLastName(event.target.value)}
-              placeholder='Last name'
-              className='inputsData'
-            />
+            <FormControl className={classes.formControl}>
+              <InputLabel id='label-first-name'>First Name</InputLabel>
+              <Input 
+                type="text"
+                value={firstName}  
+                onChange={event => setFirstName(event.target.value) }
+                className='inputsData'
+              /> 
+            </FormControl> 
+            <FormControl className={classes.formControl}>
+              <InputLabel id='label-last-name'>Last name</InputLabel>
+              <Input 
+                type="text" 
+                value={lastName}  
+                onChange={event => setLastName(event.target.value)}
+                className='inputsData'
+              />
+            </FormControl>
           </div>
 
           <div className='div-data'>
-            <Input 
-              type="text"
-              value={mobileNumberOrEmail}
-              onChange={event => setMobileNumberOrEmail(event.target.value)}
-              placeholder='Mobile number or email'
-              className='inputsData'
-            />
-
-            <Input 
-              type="password" 
-              value={newPassword}
-              onChange={event => setNewPassword(event.target.value)}
-              placeholder='New password'
-              className='inputsData'
-            />
+            <FormControl className={classes.formControl}>
+              <InputLabel id='label-mobile-number-or-email'>Mobile number or email</InputLabel>
+              <Input 
+                type="text"
+                value={mobileNumberOrEmail}
+                onChange={event => setMobileNumberOrEmail(event.target.value)}
+                className='inputsData'
+              />
+            </FormControl>
+            <FormControl className={classes.formControl}>
+              <InputLabel id='label-new-password'>New password</InputLabel>
+              <Input 
+                type="password" 
+                value={newPassword}
+                onChange={event => setNewPassword(event.target.value)}
+                className='inputsData'
+              />
+            </FormControl>
           </div>
-        </FormControl>
+        
 
         <h3 id='h3-birthday'>Birthday</h3>
         <div id='birthday'>
@@ -138,7 +160,7 @@ function CreateAccount() {
             <InputLabel id='inputLabel-material-months'>Months</InputLabel>
             <Select 
               title='months' 
-              labelId='inputLabel-material-months'
+              labelId='select-material-months'
               className='selects-material-ui'
               open={isOpenMonths}
               onClose={handleCloseMonths}
@@ -165,10 +187,10 @@ function CreateAccount() {
           </FormControl>
 
             <FormControl className={classes.formControl}>
-              <InputLabel id='input-day-material'>Day</InputLabel>
+              <InputLabel id='inputLabel-day'>Day</InputLabel>
               <Select 
                 title='day'
-                labelId='select-day-material'
+                labelId='select-day'
                 className='selects-material-ui'
                 open={isOpenDay}
                 onOpen={handleOpenDay}
@@ -214,10 +236,10 @@ function CreateAccount() {
             </FormControl>
 
             <FormControl className={classes.formControl}>
-              <InputLabel id='demo-controlled-open-select-label'>Year</InputLabel>
+              <InputLabel id='input-label-year'>Year</InputLabel>
               <Select 
                 title='year' 
-                labelId='demo-controlled-open-select-label'
+                labelId='select-label-year'
                 className='selects-material-ui'
                 open={isOpenYear}
                 onClose={handleCloseYear}
@@ -260,9 +282,6 @@ function CreateAccount() {
             </div>  
           </div>
 
-          <Link id='anchor-signUp' to="/login">
-            Sign Up
-          </Link>
         </section>
       </div>
     </>
@@ -270,85 +289,3 @@ function CreateAccount() {
 }
 
 export default CreateAccount
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// id="select-day"
-
-
-
-{/* <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option>
-              <option value="">5</option>
-              <option value="">6</option>
-              <option value="">7</option>
-              <option value="">8</option>
-              <option value="">9</option>
-              <option value="">10</option>
-              <option value="">11</option>
-              <option value="">12</option>
-              <option value="">13</option>
-              <option value="">14</option>
-              <option value="">15</option>
-              <option value="">16</option>
-              <option value="">17</option>
-              <option value="">18</option>
-              <option value="">19</option>
-              <option value="">20</option>
-              <option value="">21</option>
-              <option value="">22</option>
-              <option value="">23</option>
-              <option value="">24</option>
-              <option value="">25</option>
-              <option value="">26</option>
-              <option value="">28</option>
-              <option value="">29</option>
-              <option value="">30</option>
-              <option value="">31</option> */}
-
-
-
-
-{/* <option value="">Jan</option>
-              <option value="">Fev</option>
-              <option value="">Mar</option>
-              <option value="">abr</option>
-              <option value="">Mai</option>
-              <option value="">Jun</option>
-              <option value="">Jul</option>
-              <option value="">Ago</option>
-              <option value="">Set</option>
-              <option value="">Out</option>
-              <option value="">Nov</option>
-              <option value="">Dez</option> */}
-
-
-// id="select-months"
-{/* id="select-year" */}
-{/* <option value="">2021</option>
-              <option value="">2020</option>
-              <option value="">2019</option>
-              <option value="">2018</option>
-              <option value="">2017</option> */}

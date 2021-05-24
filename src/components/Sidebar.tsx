@@ -23,7 +23,7 @@ function Sidebar() {
       .then(data => {
         setDatafromGitHub(data)
     })
-  })
+  }, [])
 
   const setDatafromGitHub = ({ avatar_url, name }: UseGitHubApi) => {
     setAvatar_url(avatar_url)
@@ -65,7 +65,7 @@ function Sidebar() {
             </Link>
           </section>
           <section className='settings'>
-            <Link to='/login'>
+            <Link to='/'>
               <Button className='button-ui-back'>
                 <FiLogOut size={30} color='#f1f1f1' />
                 <span>Exit</span>

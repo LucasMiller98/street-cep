@@ -1,27 +1,30 @@
 #header-create-account {
   width: 100vw;
   height: 15.2vh;
-  background: linear-gradient(200.10deg, #2a7c56 0%, #1a3d39 100%);
+  background: linear-gradient(200.90deg, #888787 0%, #2e2d2d 100%);
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-#header-create-account #h1-code, .anchor-login {
+#header-create-account #h1-code, .anchor-signUp {
   color: #f1f1f1;
 }
 
-#header-create-account .anchor-login {
+#header-create-account .anchor-signUp {
   font-size: 1.2rem;
   text-decoration: none;
   transition: all ease-out .3s;
-  background: linear-gradient(200.10deg, #2a7c56 0%, #1a3d39 100%);
+  background: linear-gradient(289.90deg, #303030 0%, #606060 100%);
+  border: 1.5px solid #1f2020;
+  outline-color: #fff;
   border-radius: .7rem;
   padding: .5rem 2rem;
 }
 
-#header-create-account .anchor-login:hover {
-  border: 1px solid #1a3d39;
+#header-create-account .anchor-signUp:hover {
+  text-shadow: 12px 17px 12px #666565;
+  filter: brightness(.8);
   color: #f1f1f1;
 }
 
@@ -34,8 +37,19 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 37vh;
+  height: 33vh;
   width: 100vw;
+}
+
+#label-first-name, 
+#label-last-name, 
+#label-mobile-number-or-email, 
+#label-new-password, 
+#inputLabel-material-months, 
+#inputLabel-day, 
+#input-label-year {
+  font: 500 1.2rem Nunito, sans-serif;
+  color: #151515;
 }
 
 .form-container #form-create-account {
@@ -49,7 +63,6 @@
 .form-container #form-create-account .text-name {
   display: inherit;
   gap: 1rem;
-  margin-bottom: .7rem;
 }
 
 .form-container #form-create-account .div-data {
@@ -98,43 +111,12 @@
   color: #131313;
 }
 
-/* .form-container #form-create-account #birthday 
-#select-months, 
-#select-day, 
-#select-year, 
-.form-container 
-form 
-.inputsData {
-  transition: all ease-out .3s;
-}
-
-.inputs-create {
-  transition: all ease-out .3s;
-} */
-
 .form-container #form-create-account .inputsData, .inputs-create {
   font: 500 1.3rem Lexend, sans-serif;
   outline: none;
   padding: .7rem 1.2rem;
 }
 
-.MuiSelect-select.MuiSelect-select {
-  padding-right: 135px;
-}
-
-.MuiInputLabel-formControl {
-  right: 13rem;
-  position: absolute;
-  transform: translate(0, 24px) scale(1);
-}
-
-/* .form-container #form-create-account .inputsData:focus, .inputs-create .form-container form #birthday 
-#select-months:hover, 
-#select-day:hover, 
-#select-year:hover {
-  border-bottom: 2px solid #115e53;
-  background: #f3f3f3;
-} */
 #h3-Create-a-new-account {
   margin-bottom: 0;
 }
@@ -173,7 +155,7 @@ form
 .form-container #form-create-account .div-gender .div-radio {
   background-color: #f1f1f1;
   border: 1px solid #131313;
-  width: 1.9vw;
+  width: 1.8vw;
   height: 4vh;
   cursor: pointer;
   border-radius: 50%;
@@ -193,23 +175,4 @@ form
 
 .form-container #form-create-account .div-gender label {
   font-size: 1.7rem;
-}
-
-.form-container #form-create-account #anchor-signUp {
-  text-decoration: none;
-  color: #f1f1f1;
-  font-weight: 500;
-  width: 8vw;
-  text-align: center;
-  padding: .7rem 1rem;
-  background: linear-gradient(200.30deg, #20945e 0%, #175f57 100%);
-  font-size: 1.3rem;
-  border-radius: 20px;
-  border: 1.1px solid #2a7c56;
-  transition: all ease-out .3s;
-  margin-top: 1%;
-}
-
-.form-container #form-create-account #anchor-signUp:hover, .anchor-login:hover {
-  filter: brightness(.95);
 }

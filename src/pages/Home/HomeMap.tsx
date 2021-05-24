@@ -5,7 +5,6 @@ import mapIcon from '../../images/pin.svg'
 import { useEffect, useState } from 'react'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import '../../styles/pages/home.css'
 import * as ReactBootStrap from 'react-bootstrap'
 
@@ -18,6 +17,7 @@ type UserFromGitHub = {
 }
 
 function HomeMap() {
+  document.title = 'Home'
 
   const [login, setLogin] = useState('')
   const [name, setName] = useState('')
@@ -52,9 +52,6 @@ function HomeMap() {
 
   return(
     <>
-      <Helmet>
-        <title>Home | ZipCode</title>
-      </Helmet>
       <div className='homeContainer'>
         <header id='header'>
           <h1>Welcome</h1>
@@ -94,7 +91,7 @@ function HomeMap() {
                 </Button>
               </section>
 
-              <Link to='/login' style={{ textDecoration: 'none' }}>
+              <Link to='/' style={{ textDecoration: 'none' }}>
                 <Button className='exit-anchor link-login-anhor'>
                   <FiLogOut title='Exit' size={30} className='fiLogOut' />
                   <span className='exit-span-anchor'>Exit</span>
