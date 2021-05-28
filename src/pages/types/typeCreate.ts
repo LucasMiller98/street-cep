@@ -1,7 +1,7 @@
 export default interface CreateUser {
-  firstNameUser: string
-  lastNameUser: string
+  firstName: string
+  lastName: string
   email: string
-  newPasswordUserApi: string
-
+  newPassword: string
+  gender: string
 }

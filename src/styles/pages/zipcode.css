@@ -134,3 +134,28 @@
   align-items: center;
   justify-content: center;
 }
+
+@media(max-width: 360px) {
+  .codeContainer .header-container #zip-code {
+    font-size: 1.7rem;
+    width: 100%;
+    margin-left: 2.8%;
+  }
+
+  .codeContainer .header-container .container-search {
+    height: 6.8vh;
+    width: 99vh;
+    margin-right: .7rem;
+  }
+
+  .codeContainer .header-container .dehaze-icon {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    margin-top: 0;
+    margin-left: .5rem;
+    cursor: pointer;
+    font-size: 29px;
+  }
+
+}

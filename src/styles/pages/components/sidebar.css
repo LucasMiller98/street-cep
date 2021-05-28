@@ -10,6 +10,10 @@
   font-weight: 700;
 }
 
+.span-user {
+  text-transform: capitalize;
+}
+
 .sidebar-settings-container-main {
   display: flex; 
   align-items: center;
@@ -71,4 +75,15 @@
   cursor: pointer;
   margin-top: 2.6%;
   margin-right: 4%;
+}
+
+@media(max-width: 360px) {
+  .sidebar-settings-container-main {
+    width: 100%;
+    text-transform: capitalize;
+  }
+
+  .sidebar-settings-container-main .figure-myProfile img {
+    width: 34%;
+  }
 }

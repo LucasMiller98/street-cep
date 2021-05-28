@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 #header-create-account {
   width: 100vw;
   height: 15.2vh;
@@ -72,19 +76,8 @@
 }
 
 .form-container #form-create-account #birthday {
-  display: inherit;
-  gap: .9rem;
   margin: 1rem 0;
   position: relative;
-}
-
-.form-container #form-create-account #h3-birthday {
-  margin-top: 1rem;
-  margin-bottom: 0;
-}
-
-#h3-birthday, #h3-gender {
-  margin-left: 1.7%;
 }
 
 #inputLabel-material-months {
@@ -124,7 +117,7 @@
 .form-container #create-new-account-easily {
   margin: .7rem 1.5rem auto;
   height: 5vh;
-  width: 38.7vw;
+  width: 40.7vw;
   text-align: left;
 }
 
@@ -138,18 +131,27 @@
 
 .form-container #form-create-account .div-gender {
   display: inherit;
+  flex-direction: column;
+  gap: .7rem;
+  width: 100%;
+}
+
+#gender-h3 {
+  margin-bottom: 0;
+}
+
+.form-container #form-create-account .div-gender .container-gender {
+  display: inherit;
   align-items: center;
-  justify-content: start;
-  gap: 5rem;
-  /* margin-top: 1rem; */
-  width: 70%;
+  justify-content: center;
+  width: 100%;
 }
 
 .form-container #form-create-account .div-gender .female, .male {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  gap: 1rem;
 }
 
 .form-container #form-create-account .div-gender .div-radio {
@@ -175,4 +177,65 @@
 
 .form-container #form-create-account .div-gender label {
   font-size: 1.7rem;
+}
+
+@media(max-width: 760px) {
+  .form-container #create-new-account-easily {
+    width: 80%;
+  }
+
+  .form-container #form-create-account .div-gender .div-radio {
+    width: 4vw;
+    height: 4.4vh;
+  }
+  
+}
+
+@media(max-width: 650px) {
+  .form-container #create-new-account-easily {
+    width: 86%;
+  }
+
+  .form-container #form-create-account .div-gender .div-radio {
+    width: 5vw;
+    height: 3vh;
+  }
+}
+
+@media(max-width: 360px) {
+  .form-container #create-new-account-easily h3 {
+    font-size: 2rem;
+  }
+
+  .form-container #create-new-account-easily span {
+    font-size: 1.5rem;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .form-container #form-create-account .text-name {
+    flex-direction: column;
+  }
+
+  .form-container #form-create-account .text-name, 
+  .form-container #form-create-account .div-data {
+    align-items: center;
+  }
+
+  #birthday {
+    display: inherit;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .div-radio {
+    width: 30vw;
+  }
+
+  .form-container #form-create-account #birthday .selects-material-ui {
+    cursor: pointer;
+    width: 73vw;
+  }
 }

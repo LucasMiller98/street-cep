@@ -25,6 +25,7 @@ function HomeMap() {
   const [followers, setFollowers] = useState(0)
   const [following, setFollowing] = useState(0)
   const [isShowPopup, setIsShowPopup] = useState(false)
+  const [repositoriGitHub, setRepositoriGitHub] = useState<string[]>([])
   
   const mapPinIcon = Leaflet.icon({
     iconUrl: mapIcon,
@@ -39,7 +40,6 @@ function HomeMap() {
       .then(data => {
         setData(data)
       })
-
   }, [])
 
   function setData({ avatar_url, name, login, followers, following }: UserFromGitHub) { 

@@ -36,7 +36,6 @@ function Login() {
     if(email === '' || password === '') {
       alert('Por favor, preencha tudo!')
     }else if(email === 'abc@email.com' && password === 'abc123') {
-      alert(`Bem vindo, ${email}`)
       return history.push('/home')
     }else{
       alert('Email e/ou senha incorreta')

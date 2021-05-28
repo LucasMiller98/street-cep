@@ -1,9 +1,17 @@
-import { createContext, ReactNode, useContext, useState } from 'react'
+import { 
+  createContext, 
+  ReactNode, 
+  useContext, 
+  useState
+} from 'react'
 
 type CreateContext = {
   isDisplayingSideBar: boolean
+  isBirthdayAndGenderFromUser: boolean
+  getBirthdayAndGenderFromUser: () => void
   setCurrentStateSideBarTrue: () => void
   setCurrentStateSideBarToFalse: () => void
+  getBirthdayAndGenderFromUserFalse: () => void
 }
 
 export const Context = createContext({} as CreateContext)
@@ -14,6 +22,7 @@ type ProviderProps = {
 
 export const ContextProvider = ({ children }: ProviderProps) => {
   const [isDisplayingSideBar, setIsDisplayingSideBar] = useState(false)
+  const [isBirthdayAndGenderFromUser, setIsBirthdayAndGenderFromUser] = useState(false)
 
   const setCurrentStateSideBarTrue = () => {
     setIsDisplayingSideBar(true)
@@ -22,12 +31,23 @@ export const ContextProvider = ({ children }: ProviderProps) => {
   const setCurrentStateSideBarToFalse = () => {
     setIsDisplayingSideBar(false)
   }
+
+  const getBirthdayAndGenderFromUser = () => {
+    setIsBirthdayAndGenderFromUser(true)
+  }
+
+  const getBirthdayAndGenderFromUserFalse = () => {
+    setIsBirthdayAndGenderFromUser(false)
+  }
   
   return (
     <Context.Provider value={{ 
       isDisplayingSideBar,
+      isBirthdayAndGenderFromUser,
       setCurrentStateSideBarTrue,
-      setCurrentStateSideBarToFalse
+      setCurrentStateSideBarToFalse,
+      getBirthdayAndGenderFromUser,
+      getBirthdayAndGenderFromUserFalse
     }}>
       { children }
     </Context.Provider>

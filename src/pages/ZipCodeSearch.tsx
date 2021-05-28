@@ -102,7 +102,6 @@ function ZipCodeSearch() {
 
   return(
     <>
-
       <div className='codeContainer'>
 
         <header className='header-container'>
@@ -113,7 +112,7 @@ function ZipCodeSearch() {
           <form onSubmit={handleSubmit} className='container-search'>
             <InputMask type='search' mask='99999-999' value={search} onChange={event => setSearch(event.target.value)} className='input-search' id='test' placeholder='Search here ...' />
             <button type='submit'>
-              <FiSearch size={30} />
+              <FiSearch size={30} style={{ marginRight: '1rem' }} />
             </button>
           </form>
 

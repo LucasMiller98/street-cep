@@ -5,11 +5,7 @@ import { Link } from 'react-router-dom'
 import '../styles/pages/components/sidebar.css'
 import { IoLanguage, MdAccountBox, FiX, FiArrowLeft , FiLogOut } from 'react-icons/all'
 import * as ReactBootStrap from 'react-bootstrap'
-
-type UseGitHubApi = {
-  avatar_url: string
-  name: string
-}
+import UseGitHubApi from './types'
 
 function Sidebar() {
 
@@ -33,7 +29,7 @@ function Sidebar() {
   return(
     <>
       <div className={isDisplayingSideBar ? 'sidebar-settings-container-main' : ''}>
-        <FiX size={35} color='#f1f1f1' className='fiX-settings' onClick={() => setCurrentStateSideBarToFalse()} />
+        <FiX size={33} color='#f1f1f1' className='fiX-settings' onClick={() => setCurrentStateSideBarToFalse()} />
         <figure className='figure-myProfile'>
           { !avatar_url ? (
             <section className='loading-img-github-myProfile'>
@@ -46,29 +42,29 @@ function Sidebar() {
         <div id='container-box'>
           <section className='settings'>
             <Button className='button-ui-back'>
-              <MdAccountBox size={30} color='#f1f1f1' />
-              <span>{name}</span>
+              <MdAccountBox size={25} color='#f1f1f1' />
+              <span className='span-user'>{name}</span>
             </Button>
           </section>
           <section className='settings'>
             <Button className='button-ui-back'>
-              <IoLanguage size={30} color='#f1f1f1' />
-              <span>Languanges</span> 
+              <IoLanguage size={25} color='#f1f1f1' />
+              <span className='span-user'>Languanges</span> 
             </Button>
           </section>
           <section className='settings'>
             <Link to='/home'>
               <Button className='button-ui-back'>
-                <FiArrowLeft size={30} color='#f1f1f1' />
-                <span>Back</span>
+                <FiArrowLeft size={25} color='#f1f1f1' />
+                <span className='span-user'>Back</span>
               </Button>
             </Link>
           </section>
           <section className='settings'>
             <Link to='/'>
               <Button className='button-ui-back'>
-                <FiLogOut size={30} color='#f1f1f1' />
-                <span>Exit</span>
+                <FiLogOut size={25} color='#f1f1f1' />
+                <span className='span-user'>Exit</span>
               </Button>
             </Link>          
           </section>
