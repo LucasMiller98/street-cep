@@ -4,238 +4,71 @@ body {
 
 #header-create-account {
   width: 100vw;
-  height: 15.2vh;
+  height: 10vh;
   background: linear-gradient(200.90deg, #888787 0%, #2e2d2d 100%);
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-#header-create-account #h1-code, .anchor-signUp {
+#button-material-ui-history {
+  background: linear-gradient(200.10deg, #606060 0%, #404040 100%);
+  padding: .5rem 1rem;
+  border-radius: 1rem;
+  width: 8%;
+  font-size: 1.1rem;
+  text-transform: capitalize;
   color: #f1f1f1;
+  transition: filter .3s;
 }
 
-#header-create-account .anchor-signUp {
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: all ease-out .3s;
-  background: linear-gradient(289.90deg, #303030 0%, #606060 100%);
-  border: 1.5px solid #1f2020;
-  outline-color: #fff;
-  border-radius: .7rem;
-  padding: .5rem 2rem;
-}
-
-#header-create-account .anchor-signUp:hover {
-  text-shadow: 12px 17px 12px #666565;
+#button-material-ui-history:hover {
   filter: brightness(.8);
-  color: #f1f1f1;
 }
 
 #header-create-account #h1-code {
   font-size: 2.3rem;
+  color: #f1f1f1;
 }
 
-.form-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 33vh;
-  width: 100vw;
+#create-new-account-easily {
+  height: 4vh;
+  width: 50%;
 }
 
-#label-first-name, 
-#label-last-name, 
-#label-mobile-number-or-email, 
-#label-new-password, 
-#inputLabel-material-months, 
-#inputLabel-day, 
-#input-label-year {
-  font: 500 1.2rem Nunito, sans-serif;
-  color: #151515;
-}
-
-.form-container #form-create-account {
-  display: flex;
-  flex-direction: column;
-  height: 23vh;
-  margin-top: 3rem;
-  position: relative;
-}
-
-.form-container #form-create-account .text-name {
-  display: inherit;
-  gap: 1rem;
-}
-
-.form-container #form-create-account .div-data {
-  display: inherit;
-  flex-direction: column;
-  gap: .7rem;
-}
-
-.form-container #form-create-account #birthday {
-  margin: 1rem 0;
-  position: relative;
-}
-
-#inputLabel-material-months {
-  position: absolute;
-  bottom: 0;
-}
-
-#demo-controlled-open-select-label {
-  position: absolute;
-  top: 0;
-}
-
-#input-day-material {
-  position: absolute;
-  top: 0;
-}
-
-.form-container #form-create-account #birthday .selects-material-ui {
-  cursor: pointer;
-  width: 10vw;
-  height: 5vh;
-  padding: 0 .7rem;
-  font-size: 1.3rem;
-  color: #131313;
-}
-
-.form-container #form-create-account .inputsData, .inputs-create {
-  font: 500 1.3rem Lexend, sans-serif;
-  outline: none;
-  padding: .7rem 1.2rem;
-}
-
-#h3-Create-a-new-account {
-  margin-bottom: 0;
-}
-
-.form-container #create-new-account-easily {
-  margin: .7rem 1.5rem auto;
-  height: 5vh;
-  width: 40.7vw;
-  text-align: left;
-}
-
-.form-container #create-new-account-easily h3 {
+#create-new-account-easily h3 {
+  margin-top: 1rem;
   font-size: 2.9rem;
 }
 
-.form-container #create-new-account-easily span {
+#create-new-account-easily span {
   font-size: 1.9rem;
-}
-
-.form-container #form-create-account .div-gender {
-  display: inherit;
-  flex-direction: column;
-  gap: .7rem;
-  width: 100%;
-}
-
-#gender-h3 {
-  margin-bottom: 0;
-}
-
-.form-container #form-create-account .div-gender .container-gender {
-  display: inherit;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.form-container #form-create-account .div-gender .female, .male {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.form-container #form-create-account .div-gender .div-radio {
-  background-color: #f1f1f1;
-  border: 1px solid #131313;
-  width: 1.8vw;
-  height: 4vh;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all ease-out .3s;
-}
-
-.form-container #form-create-account .div-gender .div-radio:hover {
-  background: #4bd452;
-}
-
-.radio-style-background-color {
-  background-color: #1aac21;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-.form-container #form-create-account .div-gender label {
-  font-size: 1.7rem;
+  text-align: left;
 }
 
 @media(max-width: 760px) {
-  .form-container #create-new-account-easily {
+  #create-new-account-easily {
     width: 80%;
   }
-
-  .form-container #form-create-account .div-gender .div-radio {
-    width: 4vw;
-    height: 4.4vh;
-  }
-  
 }
 
 @media(max-width: 650px) {
-  .form-container #create-new-account-easily {
-    width: 86%;
-  }
-
-  .form-container #form-create-account .div-gender .div-radio {
-    width: 5vw;
-    height: 3vh;
+  #create-new-account-easily {
+    width: 90%;
   }
 }
 
 @media(max-width: 360px) {
-  .form-container #create-new-account-easily h3 {
-    font-size: 2rem;
-  }
+  #create-new-account-easily h3 {
+    font-size: 1.9rem;
+}
 
   .form-container #create-new-account-easily span {
     font-size: 1.5rem;
   }
 
-  body {
-    overflow-x: hidden;
+  #header-create-account #h1-code {
+    font-size: 2rem;
   }
-
-  .form-container #form-create-account .text-name {
-    flex-direction: column;
-  }
-
-  .form-container #form-create-account .text-name, 
-  .form-container #form-create-account .div-data {
-    align-items: center;
-  }
-
-  #birthday {
-    display: inherit;
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .div-radio {
-    width: 30vw;
-  }
-
-  .form-container #form-create-account #birthday .selects-material-ui {
-    cursor: pointer;
-    width: 73vw;
-  }
+  
 }

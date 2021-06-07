@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "name": "Lucienen Machado",
+      "lastName": "Cruz",
+      "newPassword": "lucien123",
+      "confirmPassword": "lucien123",
+      "email": "luciene123@exemplo.com",
+      "id": 1
+    },
+    {
+      "name": "Lucas Miller",
+      "lastName": "Cruz",
+      "email": "lucas.miller1998@outlook.com",
+      "newPassword": "MillerDo",
+      "confirmPassword": "MillerDo",
+      "id": 2
+    },
+    {
+      "name": "Luan Mikael",
+      "lastName": "Cruz",
+      "email": "luanmikaelmusica@gmail.com",
+      "newPassword": "Mikael123",
+      "confirmPassword": "Mikael123",
+      "id": 3
+    },
+    {
+      "name": "Marcos Timoteo",
+      "lastName": "Cruz",
+      "email": "marcostimoteo@exemplo.com",
+      "newPassword": "Marcos123",
+      "confirmPassword": "Marcos123",
+      "id": 4
+    },
+    {
+      "name": "Miller",
+      "lastName": "Cruz",
+      "email": "miller.cruz1998@outlook.com",
+      "newPassword": "MillerCruz",
+      "confirmPassword": "MillerCruz",
+      "id": 5
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "email": "luciene123@exemplo.com",
+      "password": "lucien123",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "email": "lucas.miller1998@outlook.com",
+      "password": "MillerDo",
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "email": "luanmikaelmusica@gmail.com",
+      "password": "Mikael123",
+      "userId": 3
+    },
+    {
+      "id": 4,
+      "email": "marcostimoteo@exemplo.com",
+      "password": "Marcos123",
+      "userId": 4
+    }
+  ]
+}

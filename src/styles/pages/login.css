@@ -9,6 +9,10 @@
   position: relative;
 }
 
+.section-errors {
+  color: #f00;
+}
+
 .container-form .arrow-back {
   position: absolute;
   top: 0;
@@ -25,7 +29,7 @@
   transform: translateY(-2px);
 }
 
-.container-form form {
+.container-form #form-login {
   display: flex;
   align-items: center;
   justify-content: center;

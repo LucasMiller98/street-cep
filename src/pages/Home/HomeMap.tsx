@@ -25,7 +25,6 @@ function HomeMap() {
   const [followers, setFollowers] = useState(0)
   const [following, setFollowing] = useState(0)
   const [isShowPopup, setIsShowPopup] = useState(false)
-  const [repositoriGitHub, setRepositoriGitHub] = useState<string[]>([])
   
   const mapPinIcon = Leaflet.icon({
     iconUrl: mapIcon,
@@ -68,37 +67,37 @@ function HomeMap() {
 
         <div className={isShowPopup ? 'popup-container': 'popup-container-none'}>
             
-            <div className='popup'>
-              <div className='myProfile-github'>
-                <img src={avatar} alt='My Profile' className='profile-gitHub-popup' />
-              </div>
-              <button className='close' onClick={() => setIsShowPopup(false)}>
-                <FiXCircle size={35} color='#131313' />
-              </button>
-
-              <section className='account-user'>
-                <Button className='button-ui' title='GitHub profile'>
-                  <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">User name: {login}</a>
-                </Button>
-                <Button className='button-ui' title='GitHub profile'>
-                  <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Name: {name}</a>
-                </Button>
-                <Button className='button-ui' title='GitHub profile'>
-                  <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Followers: {followers}</a>
-                </Button>
-                <Button className='button-ui' title='GitHub profile'>
-                  <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Following: {following}</a>
-                </Button>
-              </section>
-
-              <Link to='/' style={{ textDecoration: 'none' }}>
-                <Button className='exit-anchor link-login-anhor'>
-                  <FiLogOut title='Exit' size={30} className='fiLogOut' />
-                  <span className='exit-span-anchor'>Exit</span>
-                </Button>
-              </Link>
+          <div className='popup'>
+            <div className='myProfile-github'>
+              <img src={avatar} alt='My Profile' className='profile-gitHub-popup' />
             </div>
+            <button className='close' onClick={() => setIsShowPopup(false)}>
+              <FiXCircle size={35} color='#131313' />
+            </button>
+
+            <section className='account-user' id='section-user'>
+              <Button className='button-ui' title='GitHub profile'>
+                <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">User name: {login}</a>
+              </Button>
+              <Button className='button-ui' title='GitHub profile'>
+                <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Name: {name}</a>
+              </Button>
+              <Button className='button-ui' title='GitHub profile'>
+                <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Followers: {followers}</a>
+              </Button>
+              <Button className='button-ui' title='GitHub profile'>
+                <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Following: {following}</a>
+              </Button>
+            </section>
+
+            <Link to='/' style={{ textDecoration: 'none' }}>
+              <Button className='exit-anchor link-login-anhor'>
+                <FiLogOut title='Exit' size={23} className='fiLogOut' />
+                <span className='exit-span-anchor'>Exit</span>
+              </Button>
+            </Link>
           </div>
+        </div>
 
         <MapContainer 
           center={[-8.1256917,-35.027856]} 
@@ -118,7 +117,7 @@ function HomeMap() {
               autoClose
               maxWidth={240}
               className='map-popup'>
-              Você está aqui
+              You are here!
             </Popup>
           </Marker>
         </MapContainer>

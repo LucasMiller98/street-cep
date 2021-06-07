@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from 'react'
+import { useState, FormEvent } from 'react'
 import Leaflet from 'leaflet'
 import mapPin from '../images/pin.svg'
 import { FiSearch } from 'react-icons/fi'
@@ -74,20 +74,18 @@ function ZipCodeSearch() {
     setUf('')
   }
 
-  useEffect(() => {
-    if('geolocation' in navigator) {
-      navigator.geolocation.watchPosition((position) => {
-        setPosition([position.coords.latitude, position.coords.longitude])
-      }, (error) => {
-        console.error(error)
-      })
-    }
-  }, [navigator.geolocation.watchPosition])
+  if('geolocation' in navigator) {
+    navigator.geolocation.watchPosition((position) => {
+      setPosition([position.coords.latitude, position.coords.longitude])
+    }, (error) => {
+      console.error(error)
+    })
+  }
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
     const inputSearch = document.getElementsByTagName('input')[0].value
-    const removeDash = inputSearch.replace(/\_|-/g, '')
+    const removeDash = inputSearch.replace(/_|-/g, '')
 
     if(removeDash.length < 8) {
       alert('Type your postal code!')

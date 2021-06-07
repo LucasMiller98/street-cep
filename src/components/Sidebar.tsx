@@ -1,9 +1,9 @@
+import { IoLanguage, MdAccountBox, FiX, FiArrowLeft , FiLogOut } from 'react-icons/all'
 import Button from '@material-ui/core/Button'
 import { useEffect, useState } from 'react'
 import { useContextApi } from '../ContextApi/Context'
 import { Link } from 'react-router-dom'
 import '../styles/pages/components/sidebar.css'
-import { IoLanguage, MdAccountBox, FiX, FiArrowLeft , FiLogOut } from 'react-icons/all'
 import * as ReactBootStrap from 'react-bootstrap'
 import UseGitHubApi from './types'
 
