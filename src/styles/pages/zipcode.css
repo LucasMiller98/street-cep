@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-evenly;
   width: 100vw;
-  height: 16vh;
+  height: 13vh;
   background: linear-gradient(200.90deg, #177938 0%, #115e53 100%);
   position: relative;
 }
@@ -72,7 +72,7 @@
   justify-content: center;
   flex-direction: column;
   width: 100vw;
-  height: 84vh;
+  height: 87vh;
 }
 
 .leaflet-control-zoom {

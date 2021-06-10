@@ -170,4 +170,8 @@
   .container-form form .container-float .inputsForm {
     min-width: 74vw;
   }
+
+  .container-form #form-login {
+    height: 100%;
+  }
 }

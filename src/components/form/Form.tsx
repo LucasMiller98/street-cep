@@ -8,7 +8,9 @@ import {
   Button,
   Container,
 } from '@material-ui/core'
+import { ToastContainer, toast } from 'react-toastify'
 import apiFake from '../../services/createUseApi'
+import 'react-toastify/dist/ReactToastify.css'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import './form.css'
@@ -49,17 +51,35 @@ export default function SignForm() {
     validationSchema: schema,
 
     onSubmit: async values => {
-      console.log(JSON.stringify(values, null, 2))
-
-      const isEqual = values.newPassword === values.confirmPassword
 
       try {
-        if(isEqual) await apiFake.post('users', values)
+        const isEqual = values.newPassword === values.confirmPassword
 
-        if(!isEqual) throw new Error('The confirmation must be equal.')
+        if(isEqual) {
+          await apiFake.post('users', values)
+          toast.success('🔥 Create with success!', {
+            autoClose: 5000,
+            position: 'top-right',
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined
+          })
+        }
+
+        if(!isEqual) throw new Error('Please, confirm your password!')
         
       }catch (error) {
-        console.error(error.message)
+        toast.error(`🤦‍♂️${error.message}`, {
+          autoClose: 5000,
+          position: 'top-right',
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        })
       }
 
     },
@@ -67,7 +87,21 @@ export default function SignForm() {
   
   return(
     <>
+
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeButton
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      
       <div className="form-container">
+        
         <form onSubmit={formik.handleSubmit} id='form-create-account'>
           <Container className='text-name'>
             <section className="section-errors-create">

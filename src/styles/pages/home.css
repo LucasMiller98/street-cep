@@ -5,21 +5,6 @@
   position: relative;
 }
 
-.homeContainer #header {
-  position: absolute;
-  left: 0;
-  z-index: 9999;
-  margin-top: 1.5rem;
-  margin-left: 1.5rem;
-  text-align: center;
-  width: 25vw;
-  max-width: 750px;
-  border-bottom: 1.2px solid #606060;
-  color: #177938;
-  background-color: rgba(241, 241, 241, .8);
-  border-radius: 20px;
-}
-
 .homeContainer .profile-gitHub {
   border-radius: 50%;
   position: absolute;
@@ -29,7 +14,7 @@
   cursor: pointer;
   z-index: 999999999999;
   margin-right: 4rem;
-  width: 4vw;
+  width: 4.6vw;
 }
 
 .homeContainer #header-search #input-search {

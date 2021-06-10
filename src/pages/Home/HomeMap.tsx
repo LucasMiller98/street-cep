@@ -7,14 +7,9 @@ import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import '../../styles/pages/home.css'
 import * as ReactBootStrap from 'react-bootstrap'
-
-type UserFromGitHub = {
-  login: string
-  name: string
-  avatar_url: string
-  followers: number
-  following: number
-}
+import UserFromGitHub from '../types/types'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function HomeMap() {
   document.title = 'Home'
@@ -41,6 +36,18 @@ function HomeMap() {
       })
   }, [])
 
+  useEffect(() => {
+    toast.info(`😀Welcome`, {
+      autoClose: 5000,
+      position: 'top-left',
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined
+    })
+  }, [])
+
   function setData({ avatar_url, name, login, followers, following }: UserFromGitHub) { 
     setLogin(login)
     setName(name)
@@ -51,10 +58,20 @@ function HomeMap() {
 
   return(
     <>
+
+      <ToastContainer
+        position='top-left'
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeButton
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    
       <div className='homeContainer'>
-        <header id='header'>
-          <h1>Welcome</h1>
-        </header>
         <button type='button' className='my--profile--github' onClick={() => setIsShowPopup(true)}>
           { !avatar ? (
             <div className='div-loading-avatar'>

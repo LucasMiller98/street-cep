@@ -10,19 +10,17 @@ import {
 import { MdAccountBox, Si1Password } from 'react-icons/all'
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
-import apiFake from '../services/createUseApi'
 import { FiLogIn } from 'react-icons/fi'
 import '../styles/pages/login.css'
 import { useFormik } from 'formik'
 import { useHistory } from 'react-router-dom'
+import apiFake from '../services/createUseApi'
+import User from './types/types'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function Login() {
   document.title = 'Login'
-
-  // const consumerApiFake = async () => {
-  //   const response = 
-  //   return response.data
-  // } 
 
   const schema = Yup.object().shape({
     email: Yup.string().email('Field email is required').required(''),
@@ -30,33 +28,53 @@ function Login() {
   }) 
 
   const history = useHistory()
-  
+
   const formik = useFormik({
 
     initialValues: {
       email: '',
-      password: ''
+      password: '',
     },
+    
     validationSchema: schema,
     onSubmit: async values => {
-      console.log(JSON.stringify(values, null, 2))
-
-      const isNotEmpty = values.email && values.password
       
       try{
-        if(isNotEmpty) {
-          await apiFake.get(`users/:id?_embed=login`)
-          
+        const hasEmailAndPasswordOnField = values.email && values.password
+
+        if(!hasEmailAndPasswordOnField) {
+          throw new Error('Email ou password não pode ser nulo!')
         }
 
-        if(!isNotEmpty) {
-          throw new Error('Field email is empty')
+        const { data } = await apiFake.get<User[]>(`users?email=${values.email}`)
+
+        if(data[0].email !== values.email) {
+          throw new Error('Email ou senha incorreta')
         }
+
+        if(data[0].newPassword !== values.password) {
+          throw new Error('Email ou senha incorreta')
+        }
+        
+        apiFake.post(`sessions`, { // Salvando a sessão
+          userId: data[0].id,
+          createAt: Date.now()
+        })
+
+        history.push('/home')
 
       }catch(error) {
-        console.error(error)
+        toast.error(`🤦‍♂️${error.message}`, {
+          autoClose: 5000,
+          position: 'top-right',
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        })
       }
-      
+    
     },
   })
 
@@ -71,18 +89,21 @@ function Login() {
 
   const styles = useStyles()
 
-  // function buttonOnClick() {
-  //   if(email === '' || password === '') {
-  //     alert('Por favor, preencha tudo!')
-  //   }else if(email === 'abc@email.com' && password === 'abc123') {
-  //     return history.push('/home')
-  //   }else{
-  //     alert('Email e/ou senha incorreta')
-  //   }
-  // } 
-
   return(
     <>
+
+      <ToastContainer 
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeButton
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    
       <div className='container-form'>
 
         <form id='form-login' onSubmit={formik.handleSubmit}>

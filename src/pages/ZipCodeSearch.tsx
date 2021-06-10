@@ -1,25 +1,18 @@
-import { useState, FormEvent } from 'react'
-import Leaflet from 'leaflet'
-import mapPin from '../images/pin.svg'
-import { FiSearch } from 'react-icons/fi'
-import '../styles/pages/zipcode.css'
-import api from '../services/SEARCH_ZIP_CODE_API'
-import DehazeIcon from '@material-ui/icons/Dehaze';
-import Sidebar from '../components/Sidebar';
-import { useContextApi } from '../ContextApi/Context'
-import InputMask from 'react-input-mask'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
-
-type SetDataZip = {
-  cep: string, 
-  logradouro: string, 
-  complemento: string, 
-  bairro: string, 
-  localidade: string
-  uf: string
-  ibge: string
-  ddd: string
-}
+import { toast, ToastContainer } from 'react-toastify'
+import { useContextApi } from '../ContextApi/Context'
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import api from '../services/SEARCH_ZIP_CODE_API'
+import 'react-toastify/dist/ReactToastify.css'
+import { Container } from '@material-ui/core'
+import Sidebar from '../components/Sidebar';
+import { useState, FormEvent } from 'react'
+import { FiSearch } from 'react-icons/fi'
+import InputMask from 'react-input-mask'
+import mapPin from '../images/pin.svg'
+import '../styles/pages/zipcode.css'
+import Leaflet from 'leaflet'
+import GitHubApi from './types/types'
 
 function ZipCodeSearch() {
   document.title = 'Search a potal code'
@@ -46,22 +39,6 @@ function ZipCodeSearch() {
     popupAnchor: [170, 2],
   })
 
-  const getApi = async () => {
-    const response = await api.get(`${search}/json`)
-    return await response.data
-  }
-
-  function setDataZipCode({ cep, logradouro, complemento, bairro, localidade, uf, ddd, ibge }: SetDataZip) {
-    setIbge(ibge)
-    setDdd(ddd)
-    setUf(uf)
-    setCep(cep)
-    setLogradouro(logradouro)
-    setComplemento(complemento)
-    setBairro(bairro)
-    setLocalidade(localidade)
-  }
-
   function clearData() {
     setBairro('')
     setCep('')
@@ -82,24 +59,66 @@ function ZipCodeSearch() {
     })
   }
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    const inputSearch = document.getElementsByTagName('input')[0].value
-    const removeDash = inputSearch.replace(/_|-/g, '')
+    
+    const { data } = await api.get<GitHubApi>(`${search}/json`)
+    
+    try{
+      const inputSearch = document.getElementsByTagName('input')[0].value
+      const removeDash = inputSearch.replace(/_|-/g, '')
 
-    if(removeDash.length < 8) {
-      alert('Type your postal code!')
-      clearData()
-    }else{
-      alert('Postal code found!')
-      getApi().then(response => {
-        setDataZipCode(response)
-      })
+      if(removeDash.length <= 8 && !data.cep) {
+        clearData()
+        throw new Error(`🔥The postal code wasn't found!`)
+      }else{
+        toast.success('🚀The Postal code was found with successful!', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        })
+        setIbge(data.ibge)
+        setDdd(data.ddd)
+        setUf(data.uf)
+        setCep(data.cep)
+        setLogradouro(data.logradouro)
+        setComplemento(data.complemento)
+        setBairro(data.bairro)
+        setLocalidade(data.localidade)
+      }
+
+    }catch(error){
+        toast.error(`${error.message}`, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined
+        })
     }
+
   }
 
   return(
     <>
+      <ToastContainer 
+        position='top-right'
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeButton
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    
       <div className='codeContainer'>
 
         <header className='header-container'>
@@ -116,7 +135,7 @@ function ZipCodeSearch() {
 
         </header>
     
-        <div id='content-main'>
+        <Container maxWidth='xl' id='content-main'>
 
           <MapContainer
             center={[latitude, longitude]}
@@ -133,25 +152,25 @@ function ZipCodeSearch() {
                 minWidth={240}
                 maxWidth={240}
                 className='map-popup'
-                // onOpen={handleSubmit}
+                
               >
                 { cep ? (
                   <section>
                     <p>
-                      Logradouro: { logradouro }
+                      Public place: { logradouro }
                     </p>
                     <p>
-                      Bairro: { bairro }
+                      Neighborhood: { bairro }
                     </p>
                     <p>
-                      Localidade: { localidade }
+                      Location: { localidade }
                     </p>
                     <p>
-                      UF: ({ uf })
+                      Federal unit: ({ uf })
                     </p>
                     { complemento && (
                       <p>
-                        Complemento: { complemento }
+                        Complement: { complemento }
                       </p>
                     ) }
                     <p>
@@ -161,7 +180,7 @@ function ZipCodeSearch() {
                       IBGE: { ibge }
                     </p>
                     <p>
-                      Posição: { position }
+                      Your current position: { position }
                     </p>
                   </section>
                 ) : (
@@ -172,7 +191,7 @@ function ZipCodeSearch() {
           
           </MapContainer>
 
-        </div>
+        </Container>
           
       </div>
       
