@@ -5,14 +5,6 @@ export default interface User {
   newPassword: string
 }
 
-export default interface UserFromGitHub {
-  login: string
-  name: string
-  avatar_url: string
-  followers: number
-  following: number
-}
-
 export default interface GitHubApi {
   seacrh: string
   cep: string, 
@@ -23,4 +15,9 @@ export default interface GitHubApi {
   uf: string
   ibge: string
   ddd: string
+  login: string
+  name: string
+  avatar_url: string
+  followers: number
+  following: number
 }

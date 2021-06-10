@@ -3,11 +3,11 @@ import { FiLogOut, FiXCircle, FiArrowRight } from 'react-icons/fi'
 import Leaflet from 'leaflet'
 import mapIcon from '../../images/pin.svg'
 import { useEffect, useState } from 'react'
-import Button from '@material-ui/core/Button'
+import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import '../../styles/pages/home.css'
 import * as ReactBootStrap from 'react-bootstrap'
-import UserFromGitHub from '../types/types'
+import GitHubApi from '../types/types'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -20,6 +20,7 @@ function HomeMap() {
   const [followers, setFollowers] = useState(0)
   const [following, setFollowing] = useState(0)
   const [isShowPopup, setIsShowPopup] = useState(false)
+  console.log(name)
   
   const mapPinIcon = Leaflet.icon({
     iconUrl: mapIcon,
@@ -48,7 +49,7 @@ function HomeMap() {
     })
   }, [])
 
-  function setData({ avatar_url, name, login, followers, following }: UserFromGitHub) { 
+  function setData({ avatar_url, name, login, followers, following }: GitHubApi) { 
     setLogin(login)
     setName(name)
     setAvatar(avatar_url)
@@ -88,9 +89,9 @@ function HomeMap() {
             <div className='myProfile-github'>
               <img src={avatar} alt='My Profile' className='profile-gitHub-popup' />
             </div>
-            <button className='close' onClick={() => setIsShowPopup(false)}>
+            <Button className='close' onClick={() => setIsShowPopup(false)}>
               <FiXCircle size={35} color='#131313' />
-            </button>
+            </Button>
 
             <section className='account-user' id='section-user'>
               <Button className='button-ui' title='GitHub profile'>

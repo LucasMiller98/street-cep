@@ -1,11 +1,11 @@
-import { IoLanguage, MdAccountBox, FiX, FiArrowLeft , FiLogOut } from 'react-icons/all'
+import { MdAccountBox, FiX, FiArrowLeft , FiLogOut } from 'react-icons/all'
 import Button from '@material-ui/core/Button'
 import { useEffect, useState } from 'react'
 import { useContextApi } from '../ContextApi/Context'
 import { Link } from 'react-router-dom'
 import '../styles/pages/components/sidebar.css'
 import * as ReactBootStrap from 'react-bootstrap'
-import UseGitHubApi from './types'
+import GitHubApi from '../pages/types/types'
 
 function Sidebar() {
 
@@ -21,7 +21,7 @@ function Sidebar() {
     })
   }, [])
 
-  const setDatafromGitHub = ({ avatar_url, name }: UseGitHubApi) => {
+  const setDatafromGitHub = ({ avatar_url, name }: GitHubApi) => {
     setAvatar_url(avatar_url)
     setName(name)
   }
@@ -44,12 +44,6 @@ function Sidebar() {
             <Button className='button-ui-back'>
               <MdAccountBox size={25} color='#f1f1f1' />
               <span className='span-user'>{name}</span>
-            </Button>
-          </section>
-          <section className='settings'>
-            <Button className='button-ui-back'>
-              <IoLanguage size={25} color='#f1f1f1' />
-              <span className='span-user'>Languanges</span> 
             </Button>
           </section>
           <section className='settings'>
