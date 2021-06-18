@@ -47,7 +47,7 @@ export const ContextProvider = ({ children }: ProviderProps) => {
       setCurrentStateSideBarTrue,
       setCurrentStateSideBarToFalse,
       getBirthdayAndGenderFromUser,
-      getBirthdayAndGenderFromUserFalse
+      getBirthdayAndGenderFromUserFalse,
     }}>
       { children }
     </Context.Provider>

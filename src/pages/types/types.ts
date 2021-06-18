@@ -5,7 +5,7 @@ export default interface User {
   newPassword: string
 }
 
-export default interface GitHubApi {
+export default interface GitHubApiTypes {
   seacrh: string
   cep: string, 
   logradouro: string, 

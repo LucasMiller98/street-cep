@@ -1,15 +1,16 @@
 import { MapContainer, TileLayer, Marker, Popup  } from 'react-leaflet'
 import { FiLogOut, FiXCircle, FiArrowRight } from 'react-icons/fi'
-import Leaflet from 'leaflet'
-import mapIcon from '../../images/pin.svg'
+import { toast, ToastContainer } from 'react-toastify'
+import * as ReactBootStrap from 'react-bootstrap'
+import apiGitHub from '../../services/apiGitHub'
+import 'react-toastify/dist/ReactToastify.css'
+import GitHubApiTypes from '../types/types'
 import { useEffect, useState } from 'react'
+import mapIcon from '../../images/pin.svg'
 import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import '../../styles/pages/home.css'
-import * as ReactBootStrap from 'react-bootstrap'
-import GitHubApi from '../types/types'
-import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import Leaflet from 'leaflet'
 
 function HomeMap() {
   document.title = 'Home'
@@ -20,7 +21,6 @@ function HomeMap() {
   const [followers, setFollowers] = useState(0)
   const [following, setFollowing] = useState(0)
   const [isShowPopup, setIsShowPopup] = useState(false)
-  console.log(name)
   
   const mapPinIcon = Leaflet.icon({
     iconUrl: mapIcon,
@@ -29,12 +29,17 @@ function HomeMap() {
     popupAnchor: [170, 2],
   })
 
+  const consumerApi = async () => {
+    const { data } = await apiGitHub.get<GitHubApiTypes>('/users/lucasmiller98')
+    setName(data.name)
+    setAvatar(data.avatar_url)
+    setLogin(data.login)
+    setFollowers(data.followers)
+    setFollowing(data.following)
+  }
+
   useEffect(() => {
-    fetch(`http://api.github.com/users/lucasmiller98`)
-      .then(res => res.json())
-      .then(data => {
-        setData(data)
-      })
+    consumerApi()
   }, [])
 
   useEffect(() => {
@@ -48,14 +53,6 @@ function HomeMap() {
       progress: undefined
     })
   }, [])
-
-  function setData({ avatar_url, name, login, followers, following }: GitHubApi) { 
-    setLogin(login)
-    setName(name)
-    setAvatar(avatar_url)
-    setFollowers(followers)
-    setFollowing(following)
-  }
 
   return(
     <>
@@ -79,7 +76,7 @@ function HomeMap() {
               <ReactBootStrap.Spinner animation='border' />
             </div>
           ) : (
-            <img src={avatar} alt="My Profile" className='profile-gitHub' /> 
+            <img src={avatar} alt="My Profile" className='profile-gitHub' />
           ) }
         </button>
 

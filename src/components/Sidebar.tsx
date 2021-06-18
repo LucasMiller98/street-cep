@@ -1,11 +1,12 @@
 import { MdAccountBox, FiX, FiArrowLeft , FiLogOut } from 'react-icons/all'
-import Button from '@material-ui/core/Button'
-import { useEffect, useState } from 'react'
 import { useContextApi } from '../ContextApi/Context'
-import { Link } from 'react-router-dom'
-import '../styles/pages/components/sidebar.css'
 import * as ReactBootStrap from 'react-bootstrap'
-import GitHubApi from '../pages/types/types'
+import '../styles/pages/components/sidebar.css'
+import Button from '@material-ui/core/Button'
+import GitHubApiTypes from '../pages/types/types'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import apiGitHub from '../services/apiGitHub'
 
 function Sidebar() {
 
@@ -13,18 +14,15 @@ function Sidebar() {
   const [avatar_url, setAvatar_url] = useState('')
   const [name, setName] = useState('')
 
-  useEffect(() => {
-    fetch(`http://api.github.com/users/lucasmiller98`)
-      .then(response => response.json())
-      .then(data => {
-        setDatafromGitHub(data)
-    })
-  }, [])
-
-  const setDatafromGitHub = ({ avatar_url, name }: GitHubApi) => {
-    setAvatar_url(avatar_url)
-    setName(name)
+  const consumerApi = async () => {
+    const { data } = await apiGitHub.get<GitHubApiTypes>('/users/lucasmiller98')
+    setAvatar_url(data.avatar_url)
+    setName(data.name)
   }
+
+  useEffect(() => {
+    consumerApi()
+  }, [])
   
   return(
     <>
