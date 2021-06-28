@@ -53,19 +53,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(207, 207, 207, 0.5);
   border-bottom: 1px solid #606060;
   height: 7vh;
 }
 
 .homeContainer .exit-anchor .exit-span-anchor {
   font-size: 1.3rem;
-  color: #131313;
   text-transform: capitalize;
-}
-
-.homeContainer .exit-anchor .fiLogOut {
-  color: #131313;
 }
 
 .popup-container {
@@ -100,12 +94,10 @@
 
 .popup-container .account-user .button-ui a {
   text-decoration: none;
-  color: #131313;
   text-transform: capitalize;
 }
 
 .popup-container .popup {
-  background-color: rgba(255, 255, 255, .5);
   width: 60%;
   height: 70.1%;
   padding-bottom: 14rem;
@@ -141,12 +133,21 @@
   font-size: 1.2em;
 }
 
+.popup .switch {
+  display: flex;
+  justify-content: flex-start;
+  width: 100vw;
+  align-items: center;
+  margin-left: 1rem;
+  margin-top: .4rem;
+}
+
 .myProfile-github {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  height: 91%;
+  height: 88%;
 }
 
 .profile-gitHub-popup {
@@ -259,7 +260,6 @@
 
   .popup-container .account-user .button-ui a {
     text-decoration: none;
-    color: #131313;
     text-transform: capitalize;
     font-size: 1.2rem;
   }

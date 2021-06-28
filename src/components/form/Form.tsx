@@ -1,6 +1,5 @@
 import { 
-  Input, 
-  InputLabel,  
+  Divider, 
   makeStyles,
   Theme,
   createStyles,
@@ -8,6 +7,7 @@ import {
   Button,
   Container,
 } from '@material-ui/core'
+import { StyledInput, StyledInputLabel } from '../../pages/styles/createStyles'
 import { ToastContainer, toast } from 'react-toastify'
 import apiFake from '../../services/createUseApi'
 import 'react-toastify/dist/ReactToastify.css'
@@ -17,15 +17,12 @@ import './form.css'
 
 export default function SignForm() {
 
-  const useStyles = makeStyles((theme: Theme) => 
-    createStyles({
+  const useStyles = makeStyles((theme: Theme) => createStyles({
       formControl: {
         margin: theme.spacing(1),
         minWidth: 120,
       },
-      selectEmpty: {
-        marginTop: theme.spacing(2),
-      }
+      
     })
   )
   
@@ -53,7 +50,7 @@ export default function SignForm() {
     onSubmit: async values => {
 
       try {
-        const isEqual = values.newPassword === values.confirmPassword
+        const isEqual = values.newPassword.trim() === values.confirmPassword.trim()
 
         if(isEqual) {
           await apiFake.post('users', values)
@@ -106,8 +103,8 @@ export default function SignForm() {
           <Container className='text-name'>
             <section className="section-errors-create">
               <FormControl className={classes.formControl}>
-                <InputLabel id='label-first-name'>First Name</InputLabel>
-                <Input 
+                <StyledInputLabel>First Name</StyledInputLabel>
+                <StyledInput 
                   placeholder='Type your name here ...'
                   onChange={formik.handleChange}
                   value={formik.values.name}
@@ -121,8 +118,8 @@ export default function SignForm() {
             </section>
             <section className="section-errors-create">
               <FormControl className={classes.formControl}>
-                <InputLabel id='label-last-name'>Last name</InputLabel>
-                <Input 
+                <StyledInputLabel>Last name</StyledInputLabel>
+                <StyledInput 
                   placeholder='Type your last name here'
                   onChange={formik.handleChange}
                   value={formik.values.lastName} 
@@ -138,8 +135,8 @@ export default function SignForm() {
 
           <Container className='div-data'>
             <FormControl className={classes.formControl}>
-              <InputLabel id='label-mobile-number-or-email'>Mobile number or email</InputLabel>
-              <Input 
+              <StyledInputLabel>Mobile number or email</StyledInputLabel>
+              <StyledInput 
                 placeholder='Type your email here ...'
                 onChange={formik.handleChange}
                 value={formik.values.email}
@@ -151,8 +148,8 @@ export default function SignForm() {
             </FormControl>
             { formik.errors.email && <div className='div-errors-formik'>{formik.errors.email}</div> }
             <FormControl className={classes.formControl}>
-              <InputLabel id='label-new-password'>New password</InputLabel>
-              <Input 
+              <StyledInputLabel>New password</StyledInputLabel>
+              <StyledInput 
                 placeholder='Type your new password here ...'
                 value={formik.values.newPassword}
                 onChange={formik.handleChange}
@@ -164,8 +161,8 @@ export default function SignForm() {
             </FormControl>
             { formik.errors.newPassword && <div className='div-errors-formik'>{formik.errors.newPassword}</div> }
             <FormControl className={classes.formControl}>
-              <InputLabel id='label-new-password'>Confirm your password</InputLabel>
-              <Input 
+              <StyledInputLabel>Confirm your password</StyledInputLabel>
+              <StyledInput
                 placeholder='Confirm your new password here ...'
                 value={formik.values.confirmPassword}
                 onChange={formik.handleChange}

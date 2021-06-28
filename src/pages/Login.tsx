@@ -7,10 +7,6 @@ import {
   makeStyles,
   InputLabel,
 } from '@material-ui/core'
-import Switch from 'react-switch'
-import { shade } from 'polished' // colors
-import { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
 import { MdAccountBox, Si1Password } from 'react-icons/all'
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
@@ -21,16 +17,10 @@ import { useHistory } from 'react-router-dom'
 import apiFake from '../services/createUseApi'
 import User from './types/types'
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css' 
 
-type ThemeProps = {
-  toggleThemeLogin: () => void
-}
-
-function Login({ toggleThemeLogin }: ThemeProps) {
+function Login() {
   document.title = 'Login'
-
-  const { colors, title } = useContext(ThemeContext)
 
   const schema = Yup.object().shape({
     email: Yup.string().email('Field email is required').required(''),
@@ -115,20 +105,6 @@ function Login({ toggleThemeLogin }: ThemeProps) {
       />
     
       <div className='container-form'>
-
-        <div className="switch">
-          <Switch 
-            onChange={toggleThemeLogin}
-            checked={title === 'dark'}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            height={10}
-            width={40}
-            handleDiameter={20}
-            offColor={shade(.15, colors.secundary)} // false
-            onColor={colors.secundary} // true
-          />
-        </div>
 
         <form id='form-login' onSubmit={formik.handleSubmit}>
           <h1 id='h1-login'>ZipCode</h1>

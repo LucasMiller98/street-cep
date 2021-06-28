@@ -8,15 +8,6 @@
   position: relative;
 }
 
-.switch {
-  display: flex;
-  justify-content: flex-end;
-  width: 100vw;
-  align-items: center;
-  margin-right: 1rem;
-  margin-top: .3rem;
-}
-
 .section-errors {
   color: #f00;
 }
@@ -45,7 +36,7 @@
   width: 29%;
   max-width: 1080px;
   min-width: 444px;
-  height: 94.2%;
+  height: 99%;
   background: linear-gradient(690.90deg, #606060 0%, #202020 100%);
   border-radius: 20px;
   position: relative;

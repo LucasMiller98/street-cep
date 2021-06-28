@@ -15,6 +15,14 @@
       "newPassword": "Mikael123",
       "confirmPassword": "Mikael123",
       "id": 2
+    },
+    {
+      "name": "Lucas",
+      "lastName": "Miller",
+      "email": "lucas.miller1998@outlook.com",
+      "newPassword": "MillerDo",
+      "confirmPassword": "MillerDo",
+      "id": 3
     }
   ],
   "sessions": [
@@ -37,6 +45,11 @@
       "userId": 1,
       "createAt": 1623343626461,
       "id": 4
+    },
+    {
+      "userId": 3,
+      "createAt": 1624645056837,
+      "id": 5
     }
   ]
 }

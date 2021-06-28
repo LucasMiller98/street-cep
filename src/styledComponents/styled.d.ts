@@ -7,9 +7,16 @@ declare module 'styled-components' {
     colors: {
       primary: string,
       secundary: string,
+      colorPopup: string,
 
       background: string,
-      textColor: string
+      textColor: string,
+      header: string,
+
+      popup: string,
+      backgroundPopup: string,
+
+      createTitles: string
     }
   }
 }

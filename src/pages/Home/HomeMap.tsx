@@ -11,10 +11,21 @@ import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import '../../styles/pages/home.css'
 import Leaflet from 'leaflet'
+import { Container, Link as Anchor } from '@material-ui/core'
+import Switch from 'react-switch'
+import { shade } from 'polished' // colors
+import { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
 
-function HomeMap() {
+type ThemeProps = {
+  toggleThemeHomeMap: () => void
+}
+
+function HomeMap({ toggleThemeHomeMap }: ThemeProps) {
   document.title = 'Home'
 
+  const { colors, title } = useContext(ThemeContext)
+  
   const [login, setLogin] = useState('')
   const [name, setName] = useState('')
   const [avatar, setAvatar] = useState('')
@@ -68,7 +79,7 @@ function HomeMap() {
         draggable
         pauseOnHover
       />
-    
+
       <div className='homeContainer'>
         <button type='button' className='my--profile--github' onClick={() => setIsShowPopup(true)}>
           { !avatar ? (
@@ -83,25 +94,41 @@ function HomeMap() {
         <div className={isShowPopup ? 'popup-container': 'popup-container-none'}>
             
           <div className='popup'>
+
+            <div className="switch">
+              <Switch 
+                title='dark mode'
+                onChange={toggleThemeHomeMap}
+                checked={title === 'dark'}
+                checkedIcon={false}
+                uncheckedIcon={false}
+                height={10}
+                width={40}
+                handleDiameter={20}
+                offColor={shade(.15, colors.secundary)} // false
+                onColor={colors.secundary} // true
+              />
+            </div>
+            
             <div className='myProfile-github'>
               <img src={avatar} alt='My Profile' className='profile-gitHub-popup' />
             </div>
             <Button className='close' onClick={() => setIsShowPopup(false)}>
-              <FiXCircle size={35} color='#131313' />
+              <FiXCircle className='fiXClose' size={35} />
             </Button>
 
             <section className='account-user' id='section-user'>
               <Button className='button-ui' title='GitHub profile'>
-                <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">User name: {login}</a>
+                <Anchor className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">User name: {login}</Anchor>
               </Button>
               <Button className='button-ui' title='GitHub profile'>
-                <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Name: {name}</a>
+                <Anchor className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Name: {name}</Anchor>
               </Button>
               <Button className='button-ui' title='GitHub profile'>
-                <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Followers: {followers}</a>
+                <Anchor className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Followers: {followers}</Anchor>
               </Button>
               <Button className='button-ui' title='GitHub profile'>
-                <a className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Following: {following}</a>
+                <Anchor className='link-github' target='_blank' rel='noreferrer' href="https://github.com/LucasMiller98">Following: {following}</Anchor>
               </Button>
             </section>
 

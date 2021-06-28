@@ -4,7 +4,7 @@ import { useContextApi } from '../ContextApi/Context'
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import api from '../services/SEARCH_ZIP_CODE_API'
 import 'react-toastify/dist/ReactToastify.css'
-import { Container } from '@material-ui/core'
+import { Container, withStyles, makeStyles } from '@material-ui/core'
 import Sidebar from '../components/Sidebar';
 import { useState, FormEvent } from 'react'
 import { FiSearch } from 'react-icons/fi'
@@ -13,7 +13,8 @@ import mapPin from '../images/pin.svg'
 import '../styles/pages/zipcode.css'
 import Leaflet from 'leaflet'
 import GitHubApi from './types/types'
-
+import { StyledHeaderContainer } from './styles/styles' 
+ 
 function ZipCodeSearch() {
   document.title = 'Search a potal code'
   
@@ -120,8 +121,8 @@ function ZipCodeSearch() {
       />
     
       <div className='codeContainer'>
-
-        <header className='header-container'>
+{/* className='header-container' */}
+        <StyledHeaderContainer maxWidth='xl' className='header-container'>
           <h1 id='zip-code'>Zip Code</h1>
 
           <DehazeIcon style={{ color: '#f1f1f1' }} className='dehaze-icon' onClick={() => setCurrentStateSideBarTrue()} />
@@ -133,7 +134,7 @@ function ZipCodeSearch() {
             </button>
           </form>
 
-        </header>
+        </StyledHeaderContainer>
     
         <Container maxWidth='xl' id='content-main'>
 

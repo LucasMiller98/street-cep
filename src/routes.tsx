@@ -12,21 +12,20 @@ function Routes({ toggleThemeProps }: ThemeProps) {
   return(
     <Router>
       <Switch>
+        <Route exact path='/' component={Login} />
+
         <Route 
-          exact 
-          path='/' 
+          path='/home' 
           render={ // para passar props através de rotas, devemos usar o render
-            props => <Login {...props // Vai renderizar o login pegando a props
-          } 
+          props => <HomeMap { ...props } // Vai renderizar o login pegando a props
 
-          toggleThemeLogin={
-            toggleThemeProps // Props que será passada para o componente login
-          } 
-
-          /> 
-          } 
+          toggleThemeHomeMap={
+            toggleThemeProps // Props que será passada para o componente HomeMap
+          }
         />
-        <Route path='/home' component={HomeMap} />
+        }
+      />
+      
         <Route path='/create' component={CreateAccount} />
         <Route path='/zipcode-app' component={ZipCode} />
       </Switch>

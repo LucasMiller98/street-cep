@@ -4,12 +4,10 @@
   justify-content: space-evenly;
   width: 100vw;
   height: 13vh;
-  background: linear-gradient(200.90deg, #177938 0%, #115e53 100%);
   position: relative;
 }
 
 .codeContainer .header-container #zip-code {
-  color: #f1f1f1;
   font-size: 3rem;
 }
 

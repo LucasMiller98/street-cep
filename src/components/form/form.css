@@ -18,8 +18,8 @@
 #anchor-signUp {
   font-size: 1.2rem;
   text-decoration: none;
-  transition: all ease-out .3s;
   background: linear-gradient(289.90deg, #303030 0%, #606060 100%);
+  transition: all ease-out .3s;
   outline-color: #fff;
   border-radius: .7rem;
   width: 8vw;
