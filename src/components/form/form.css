@@ -53,22 +53,6 @@
   position: relative;
 }
 
-.form-container #form-create-account .div-data {
-  display: inherit;
-  flex-direction: column;
-  gap: .7rem;
-}
-
-.form-container #form-create-account #birthday {
-  margin: 1rem 0;
-  position: relative;
-}
-
-#inputLabel-material-months {
-  position: absolute;
-  bottom: 0;
-}
-
 #demo-controlled-open-select-label {
   position: absolute;
   top: 0;
@@ -77,10 +61,6 @@
 #input-day-material {
   position: absolute;
   top: 0;
-}
-
-.form-container #form-create-account .text-name {
-  display: inherit;
 }
 
 .form-container #form-create-account #birthday .selects-material-ui {

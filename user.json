@@ -23,6 +23,30 @@
       "newPassword": "MillerDo",
       "confirmPassword": "MillerDo",
       "id": 3
+    },
+    {
+      "name": "Luciane Machado",
+      "lastName": "Cruz",
+      "email": "luciene.machado@exemple.com",
+      "newPassword": "Luciene123",
+      "confirmPassword": "Luciene123",
+      "id": 4
+    },
+    {
+      "name": "Lucas",
+      "lastName": "Cardoso",
+      "email": "lucas.cardoso@exemple.com",
+      "newPassword": "lucas123",
+      "confirmPassword": "lucas123",
+      "id": 5
+    },
+    {
+      "name": "Lucas Miller",
+      "lastName": "Cruz",
+      "email": "lucas.miller@exemple.com",
+      "newPassword": "MillerDo",
+      "confirmPassword": "MillerDo",
+      "id": 6
     }
   ],
   "sessions": [
@@ -50,6 +74,21 @@
       "userId": 3,
       "createAt": 1624645056837,
       "id": 5
+    },
+    {
+      "userId": 4,
+      "createAt": 1625002375568,
+      "id": 6
+    },
+    {
+      "userId": 5,
+      "createAt": 1625506802073,
+      "id": 7
+    },
+    {
+      "userId": 6,
+      "createAt": 1626986942427,
+      "id": 8
     }
   ]
 }

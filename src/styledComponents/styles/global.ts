@@ -1,4 +1,12 @@
 import { createGlobalStyle } from 'styled-components'
+import { 
+  StyledContainerData, 
+  StyledContainerText, 
+  StyledErrorsCreate, 
+  StyledFormContainer, 
+  StyledInput, 
+  StyledInputLabel 
+} from '../../pages/styles/createStyles'
 
 export default createGlobalStyle `
 
@@ -32,4 +40,9 @@ export default createGlobalStyle `
   #create-new-account-easily h3, #create-new-account-easily span {
     color: ${ props => props.theme.colors.createTitles };
   }
+
+  
 `
+  /* ${StyledContainerData} {
+    color: ${ props => props.theme.colors.primary };
+  } */

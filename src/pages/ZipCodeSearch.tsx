@@ -1,10 +1,10 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { toast, ToastContainer } from 'react-toastify'
-import { useContextApi } from '../ContextApi/Context'
+import { useContextApi } from '../ContextApi/hooks/useContextApi'
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import api from '../services/SEARCH_ZIP_CODE_API'
 import 'react-toastify/dist/ReactToastify.css'
-import { Container, withStyles, makeStyles } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 import Sidebar from '../components/Sidebar';
 import { useState, FormEvent } from 'react'
 import { FiSearch } from 'react-icons/fi'
@@ -14,6 +14,7 @@ import '../styles/pages/zipcode.css'
 import Leaflet from 'leaflet'
 import GitHubApi from './types/types'
 import { StyledHeaderContainer } from './styles/styles' 
+import { useFormik } from 'formik'
  
 function ZipCodeSearch() {
   document.title = 'Search a potal code'
@@ -60,51 +61,54 @@ function ZipCodeSearch() {
     })
   }
 
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault()
-    
-    const { data } = await api.get<GitHubApi>(`${search}/json`)
-    
-    try{
-      const inputSearch = document.getElementsByTagName('input')[0].value
-      const removeDash = inputSearch.replace(/_|-/g, '')
+  const formik = useFormik({
+    initialValues: {
+      searchField: '',
+    },
+    onSubmit: async values => {
+      const { data } = await api.get<GitHubApi>(`${values.searchField}/json`)
 
-      if(removeDash.length <= 8 && !data.cep) {
-        clearData()
-        throw new Error(`🔥The postal code wasn't found!`)
-      }else{
-        toast.success('🚀The Postal code was found with successful!', {
+      try{
+        const inputSearch = document.getElementsByTagName('input')[0].value
+        const removeDash = inputSearch.replace(/_|-/g, '')
+
+        if(removeDash.length <= 8 && !data.cep) {
+          clearData()
+          throw new Error(`🔥The postal code wasn't found!`)
+        }else{
+          toast.success('🚀The postal code was found with successful!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined
+          })
+
+          setComplemento(data.complemento)
+          setLocalidade(data.localidade)
+          setLogradouro(data.logradouro)
+          setBairro(data.bairro)
+          setIbge(data.ibge)
+          setCep(data.cep)
+          setDdd(data.ddd)
+          setUf(data.uf)
+        }
+
+      }catch(error) {
+        toast.error(`🤦‍♂️${error.message}`, {
           position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          progress: undefined
+          progress: undefined,
         })
-        setIbge(data.ibge)
-        setDdd(data.ddd)
-        setUf(data.uf)
-        setCep(data.cep)
-        setLogradouro(data.logradouro)
-        setComplemento(data.complemento)
-        setBairro(data.bairro)
-        setLocalidade(data.localidade)
       }
-
-    }catch(error){
-        toast.error(`${error.message}`, {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined
-        })
     }
-
-  }
+  })
 
   return(
     <>
@@ -127,8 +131,16 @@ function ZipCodeSearch() {
 
           <DehazeIcon style={{ color: '#f1f1f1' }} className='dehaze-icon' onClick={() => setCurrentStateSideBarTrue()} />
 
-          <form onSubmit={handleSubmit} className='container-search'>
-            <InputMask type='search' mask='99999-999' value={search} onChange={event => setSearch(event.target.value)} className='input-search' id='test' placeholder='Search here ...' />
+          <form onSubmit={formik.handleSubmit} className='container-search'>
+            <InputMask 
+              id='test' placeholder='Search here ...' 
+              value={formik.values.searchField} 
+              onChange={formik.handleChange} 
+              className='input-search' 
+              name='searchField'
+              mask='99999-999' 
+              type='search' 
+            />
             <button type='submit'>
               <FiSearch size={30} style={{ marginRight: '1rem' }} />
             </button>

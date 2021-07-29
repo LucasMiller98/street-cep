@@ -1,7 +1,10 @@
+import { StyledContainerSwitch, StyledMyProfileGitHub } from '../styles/createStyles'
 import { MapContainer, TileLayer, Marker, Popup  } from 'react-leaflet'
 import { FiLogOut, FiXCircle, FiArrowRight } from 'react-icons/fi'
+import { Container, Link as Anchor } from '@material-ui/core'
 import { toast, ToastContainer } from 'react-toastify'
 import * as ReactBootStrap from 'react-bootstrap'
+import { ThemeContext } from 'styled-components'
 import apiGitHub from '../../services/apiGitHub'
 import 'react-toastify/dist/ReactToastify.css'
 import GitHubApiTypes from '../types/types'
@@ -11,11 +14,9 @@ import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import '../../styles/pages/home.css'
 import Leaflet from 'leaflet'
-import { Container, Link as Anchor } from '@material-ui/core'
 import Switch from 'react-switch'
 import { shade } from 'polished' // colors
 import { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
 
 type ThemeProps = {
   toggleThemeHomeMap: () => void
@@ -93,9 +94,9 @@ function HomeMap({ toggleThemeHomeMap }: ThemeProps) {
 
         <div className={isShowPopup ? 'popup-container': 'popup-container-none'}>
             
-          <div className='popup'>
+          <Container className='popup'>
 
-            <div className="switch">
+            <StyledContainerSwitch>
               <Switch 
                 title='dark mode'
                 onChange={toggleThemeHomeMap}
@@ -108,11 +109,11 @@ function HomeMap({ toggleThemeHomeMap }: ThemeProps) {
                 offColor={shade(.15, colors.secundary)} // false
                 onColor={colors.secundary} // true
               />
-            </div>
+            </StyledContainerSwitch>
             
-            <div className='myProfile-github'>
+            <StyledMyProfileGitHub>
               <img src={avatar} alt='My Profile' className='profile-gitHub-popup' />
-            </div>
+            </StyledMyProfileGitHub>
             <Button className='close' onClick={() => setIsShowPopup(false)}>
               <FiXCircle className='fiXClose' size={35} />
             </Button>
@@ -138,7 +139,7 @@ function HomeMap({ toggleThemeHomeMap }: ThemeProps) {
                 <span className='exit-span-anchor'>Exit</span>
               </Button>
             </Link>
-          </div>
+          </Container>
         </div>
 
         <MapContainer 

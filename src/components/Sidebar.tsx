@@ -1,5 +1,5 @@
 import { MdAccountBox, FiX, FiArrowLeft , FiLogOut } from 'react-icons/all'
-import { useContextApi } from '../ContextApi/Context'
+import { useContextApi } from '../ContextApi/hooks/useContextApi'
 import * as ReactBootStrap from 'react-bootstrap'
 import '../styles/pages/components/sidebar.css'
 import Button from '@material-ui/core/Button'
@@ -37,7 +37,7 @@ function Sidebar() {
             <img src={avatar_url} alt='My Profile' />
           ) }
         </figure>
-        <div id='container-box'>
+        <div>
           <section className='settings'>
             <Button className='button-ui-back'>
               <MdAccountBox size={25} color='#f1f1f1' />

@@ -7,13 +7,14 @@ import {
   Button,
   Container,
 } from '@material-ui/core'
-import { StyledInput, StyledInputLabel } from '../../pages/styles/createStyles'
+import { StyledContainerText, StyledInput, StyledInputLabel } from '../../pages/styles/createStyles'
 import { ToastContainer, toast } from 'react-toastify'
 import apiFake from '../../services/createUseApi'
 import 'react-toastify/dist/ReactToastify.css'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import './form.css'
+import { StyledContainerData } from './../../pages/styles/createStyles';
 
 export default function SignForm() {
 
@@ -100,11 +101,11 @@ export default function SignForm() {
       <div className="form-container">
         
         <form onSubmit={formik.handleSubmit} id='form-create-account'>
-          <Container className='text-name'>
-            <section className="section-errors-create">
+          <StyledContainerText>
+            <section>
               <FormControl className={classes.formControl}>
                 <StyledInputLabel>First Name</StyledInputLabel>
-                <StyledInput 
+                <StyledInput
                   placeholder='Type your name here ...'
                   onChange={formik.handleChange}
                   value={formik.values.name}
@@ -116,7 +117,7 @@ export default function SignForm() {
               </FormControl> 
               { formik.errors.name && <div className='div-errors-formik'>{formik.errors.name}</div> }
             </section>
-            <section className="section-errors-create">
+            <section>
               <FormControl className={classes.formControl}>
                 <StyledInputLabel>Last name</StyledInputLabel>
                 <StyledInput 
@@ -131,9 +132,9 @@ export default function SignForm() {
               </FormControl>
               { formik.errors.lastName && <div className='div-errors-formik'>{formik.errors.lastName}</div> }
             </section>
-          </Container>
+          </StyledContainerText>
 
-          <Container className='div-data'>
+          <StyledContainerData>
             <FormControl className={classes.formControl}>
               <StyledInputLabel>Mobile number or email</StyledInputLabel>
               <StyledInput 
@@ -173,7 +174,7 @@ export default function SignForm() {
               />
             </FormControl>
             { formik.errors.confirmPassword && <div className='div-errors-formik'>{formik.errors.confirmPassword}</div> }
-          </Container>
+          </StyledContainerData>
 
           <Button 
             style={{ color: '#f1f1f1' }}

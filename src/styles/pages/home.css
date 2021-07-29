@@ -88,7 +88,7 @@
 
 .popup-container .account-user .button-ui {
   font-size: calc(1.5rem - .5px);
-  border-bottom: 2px solid #606060;
+  /* border-bottom: 2px solid #606060; */
   text-transform: capitalize;
 }
 
@@ -131,15 +131,6 @@
   background-color: transparent;
   font-family: Inter, 'Times New Roman', Times, sans-serif;
   font-size: 1.2em;
-}
-
-.popup .switch {
-  display: flex;
-  justify-content: flex-start;
-  width: 100vw;
-  align-items: center;
-  margin-left: 1rem;
-  margin-top: .4rem;
 }
 
 .myProfile-github {
