@@ -14,13 +14,14 @@ function Sidebar() {
   const [avatar_url, setAvatar_url] = useState('')
   const [name, setName] = useState('')
 
-  const consumerApi = async () => {
-    const { data } = await apiGitHub.get<GitHubApiTypes>('/users/lucasmiller98')
-    setAvatar_url(data.avatar_url)
-    setName(data.name)
-  }
-
+  
   useEffect(() => {
+    const consumerApi = async () => {
+      const { data } = await apiGitHub.get<GitHubApiTypes>('/users/lucasmiller98')
+      setAvatar_url(data.avatar_url)
+      setName(data.name)
+    }
+    
     consumerApi()
   }, [])
   

@@ -1,11 +1,9 @@
 import { 
-  Divider, 
   makeStyles,
   Theme,
   createStyles,
   FormControl,
   Button,
-  Container,
 } from '@material-ui/core'
 import { StyledContainerText, StyledInput, StyledInputLabel } from '../../pages/styles/createStyles'
 import { ToastContainer, toast } from 'react-toastify'

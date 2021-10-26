@@ -6,7 +6,7 @@ import api from '../services/SEARCH_ZIP_CODE_API'
 import 'react-toastify/dist/ReactToastify.css'
 import { Container } from '@material-ui/core'
 import Sidebar from '../components/Sidebar';
-import { useState, FormEvent } from 'react'
+import { useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
 import InputMask from 'react-input-mask'
 import mapPin from '../images/pin.svg'
