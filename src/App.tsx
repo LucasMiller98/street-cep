@@ -4,7 +4,7 @@ import usePersistedState from './utils/usePersistedState'
 import { ContextProvider } from './ContextApi/Context'
 import { ThemeProvider } from 'styled-components'
 import 'leaflet/dist/leaflet.css'
-import Routes from './routes'
+import AllRoutes from './routes'
 import './styles/global.css'
 import light from './styledComponents/themes/light'
 import dark from './styledComponents/themes/dark'
@@ -23,7 +23,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <ContextProvider>
             <GlobalStyles />
-            <Routes toggleThemeProps={toggleTheme} />
+            <AllRoutes toggleThemeProps={toggleTheme} />
           </ContextProvider>
         </ThemeProvider>
       {/* </ThemeProviderMaterial> */}

@@ -66,7 +66,7 @@ export default function SignForm() {
 
         if(!isEqual) throw new Error('Please, confirm your password!')
         
-      }catch (error) {
+      }catch (error: any) {
         toast.error(`🤦‍♂️${error.message}`, {
           autoClose: 5000,
           position: 'top-right',

@@ -63,7 +63,7 @@ function Login() {
 
         history.push('/home')
 
-      }catch(error) {
+      }catch(error: any) {
         toast.error(`🤦‍♂️${error.message}`, {
           autoClose: 5000,
           position: 'top-right',

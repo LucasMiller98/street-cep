@@ -8,7 +8,7 @@ type ThemeProps = {
   toggleThemeProps: () => void
 }
 
-function Routes({ toggleThemeProps }: ThemeProps) {
+function AllRoutes({ toggleThemeProps }: ThemeProps) {
   return(
     <Router>
       <Switch>
@@ -33,4 +33,4 @@ function Routes({ toggleThemeProps }: ThemeProps) {
   )
 }
 
-export default Routes
+export default AllRoutes

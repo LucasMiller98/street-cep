@@ -97,6 +97,7 @@
 
 .container-button-login #button-signIn-submit {
   padding: .7rem 1rem;
+  margin-bottom: 4rem;
   
   display: flex;
   align-items: center;
@@ -111,7 +112,8 @@
   font-size: 1.3rem;
 }
 
-#button-signIn-submit, .link-signIn {
+#button-signIn-submit, 
+.link-signIn {
   background: linear-gradient(289.90deg, #303030 0%, #606060 100%);
   border: 1.5px solid #1f2020;
   outline-color: #bfc1c2;
@@ -125,7 +127,8 @@
   margin-left: .9rem;
 }
 
-.link-create-account .link-signIn {
+.link-create-account 
+.link-signIn {
   text-decoration: none;
   color: #f1f1f1;
   font-weight: 500;
@@ -134,7 +137,10 @@
   transition: all ease .4s;
 }
 
-.container-button-login #button-signIn-submit:hover, .link-create-account .link-signIn:hover {
+.container-button-login 
+#button-signIn-submit:hover, 
+.link-create-account 
+.link-signIn:hover {
   text-shadow: 12px 17px 12px #666565;
   filter: brightness(.6);
 }

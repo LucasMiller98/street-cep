@@ -96,7 +96,7 @@ function ZipCodeSearch() {
           setUf(data.uf)
         }
 
-      }catch(error) {
+      }catch(error: any) {
         toast.error(`🤦‍♂️${error.message}`, {
           position: 'top-right',
           autoClose: 5000,
